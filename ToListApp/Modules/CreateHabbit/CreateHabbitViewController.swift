@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class CreateGoalVC: UIViewController {
+final class CreateHabbitViewController: UIViewController {
     
     //MARK: - Properties
     var closeAction : (()->())?
@@ -21,7 +21,7 @@ final class CreateGoalVC: UIViewController {
         container.layer.cornerRadius = 30
         return container
     }()
-    private lazy var goalField: UITextField = {
+    private lazy var habbitField: UITextField = {
         let field = UITextField()
         field.layer.borderWidth = 1
         field.text = "Goal"
@@ -36,38 +36,6 @@ final class CreateGoalVC: UIViewController {
         field.textColor = .white
         return field
     }()
-    private lazy var notifyButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "Group"),
-                        for: .normal)
-        button.backgroundColor = .blueText
-        button.layer.cornerRadius = 30
-        button.layer.masksToBounds = true
-        return button
-    }()
-    private lazy var n21Button: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "21"),
-                        for: .normal)
-        button.backgroundColor = .blueText
-        button.layer.cornerRadius = 30
-        button.layer.masksToBounds = true
-        return button
-    }()
-    private lazy var repeatLabel: UILabel = {
-        let label = UILabel()
-        label.font = .montserratSemiBold(ofSize: 14)
-        label.textColor = .white
-        label.text = "repeat_every_day".localized
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        return label
-    }()
-    private lazy var checkBox: CheckBox = {
-        let view = CheckBox()
-        view.isChecked = false
-        return view
-    }()
     private lazy var collectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .horizontal
@@ -78,7 +46,7 @@ final class CreateGoalVC: UIViewController {
         collection.backgroundColor = .clear
         collection.allowsSelection = true
         collection.showsHorizontalScrollIndicator = false
-        collection.register(WeekCell.self, forCellWithReuseIdentifier: WeekCell.cellId)
+        collection.register(ColourCell.self, forCellWithReuseIdentifier: ColourCell.cellId)
         return collection
     }()
     private lazy var createButton: UIButton = {
@@ -87,7 +55,7 @@ final class CreateGoalVC: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
         button.titleLabel?.font = .montserratSemiBold(ofSize: 14)
-        button.setTitle("create_goal".localized,
+        button.setTitle("Create habbit".localized,
                         for: .normal)
         button.setTitleColor(.blueColor,
                              for: .normal)
@@ -119,39 +87,20 @@ final class CreateGoalVC: UIViewController {
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
             make.left.equalToSuperview()
-            make.height.equalTo(380)
+            make.height.equalTo(250)
         }
         container.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-        container.addSubviews(goalField, notifyButton, n21Button,
-                              repeatLabel, checkBox, collectionView,
+        container.addSubviews(habbitField,
+                              collectionView,
                               createButton)
-        goalField.snp.makeConstraints { make in
+        habbitField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.height.equalTo(44)
         }
-        notifyButton.snp.makeConstraints { make in
-            make.top.equalTo(goalField.snp.bottom).offset(40)
-            make.width.height.equalTo(60)
-            make.left.equalToSuperview().offset(64)
-        }
-        n21Button.snp.makeConstraints { make in
-            make.top.equalTo(goalField.snp.bottom).offset(40)
-            make.width.height.equalTo(60)
-            make.right.equalToSuperview().offset(-64)
-        }
-        repeatLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16)
-            make.top.equalTo(n21Button.snp.bottom).offset(22)
-        }
-        checkBox.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-24)
-            make.height.width.equalTo(21)
-            make.centerY.equalTo(repeatLabel)
-        }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(checkBox.snp.bottom).offset(16)
+            make.top.equalTo(habbitField.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(45)
@@ -197,12 +146,12 @@ final class CreateGoalVC: UIViewController {
             }
     }
 }
-extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CreateHabbitViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColourCell.cellId, for: indexPath) as! ColourCell
         
         return cell
     }

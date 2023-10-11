@@ -1,12 +1,12 @@
 import UIKit
 
-final class DeadlinesViewController: BaseController {
+final class HabbitsViewController: BaseController {
     
     //MARK: - Properties
     private lazy var tableView: UITableView = {
         let table = UITableView()
-        table.register(DeadlinesCell.self,
-                       forCellReuseIdentifier: DeadlinesCell.cellId)
+        table.register(HabbitCell.self,
+                       forCellReuseIdentifier: HabbitCell.cellId)
         table.backgroundColor = .white
         table.separatorStyle = .none
         table.delegate = self
@@ -70,7 +70,7 @@ final class DeadlinesViewController: BaseController {
     //MARK: - Functions
     @objc
     private func tapCreate() {
-        let vc = CreateGoalVC()
+        let vc = CreateHabbitViewController()
         vc.modalPresentationStyle = .overCurrentContext
         Router.shared.show(vc)
     }
@@ -78,7 +78,7 @@ final class DeadlinesViewController: BaseController {
 
 
 //MARK: - TableView Delegate
-extension DeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
+extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
@@ -87,8 +87,8 @@ extension DeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: DeadlinesCell.cellId,
-            for: indexPath) as! DeadlinesCell
+            withIdentifier: HabbitCell.cellId,
+            for: indexPath) as! HabbitCell
         
         return cell
     }
@@ -101,8 +101,9 @@ extension DeadlinesViewController: UITableViewDataSource, UITableViewDelegate {
         return footerView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+        let vc = HabbitDetailVC()
+        vc.modalPresentationStyle = .overCurrentContext
+        Router.shared.show(vc)    }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
             completionHandler(true)

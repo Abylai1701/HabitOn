@@ -1,6 +1,6 @@
 import UIKit
 
-class DeadlinesCell: UITableViewCell {
+class HabbitCell: UITableViewCell {
     
     //MARK: - Properties
     private lazy var mainView: RoundedRightView = {

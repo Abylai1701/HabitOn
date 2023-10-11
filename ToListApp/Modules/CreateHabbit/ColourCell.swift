@@ -1,16 +1,15 @@
 import UIKit
 
-class WeekCell: UICollectionViewCell {
+class ColourCell: UICollectionViewCell {
     
     //MARK: - Properties
     
     private let borderLayer = CALayer()
     
-    private lazy var label: UIButton = {
+    private lazy var colour: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "21"),
-                        for: .normal)
-        button.backgroundColor = .blueText
+        
+        button.backgroundColor = .greenColor
         button.layer.cornerRadius = 22.5
         button.layer.masksToBounds = true
         return button
@@ -25,13 +24,13 @@ class WeekCell: UICollectionViewCell {
     
     //MARK: - Setup Views
     private func setupViews() {
-        layer.borderWidth = 5 // Измените толщину линии по вашему выбору
+        layer.borderWidth = 5
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = 22.5
         contentView.isUserInteractionEnabled = true
 
-        addSubview(label)
-        label.snp.makeConstraints { make in
+        addSubview(colour)
+        colour.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.width.equalTo(45)
         }

@@ -11,7 +11,7 @@ final class TabbarController: UITabBarController,
         let main = MainController()
         main.tabBarItem = UITabBarItem.init(title: "main".localized, image: UIImage(named: "Home"), tag: 0)
         
-        let deadlines = DeadlinesViewController()
+        let deadlines = HabbitsViewController()
         deadlines.tabBarItem = UITabBarItem.init(title: "deadlines".localized, image: #imageLiteral(resourceName: "Notification"), tag: 1)
         
         let settings = SettingsViewController()
