@@ -1,0 +1,728 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		753D1AED2AC61E140017BCAA /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D1AEC2AC61E140017BCAA /* DoneView.swift */; };
+		75DC9D9B2AD6BEC900324E21 /* DeadlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9A2AD6BEC900324E21 /* DeadlinesViewController.swift */; };
+		75DC9D9E2AD6BF1A00324E21 /* DeadlinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9D2AD6BF1A00324E21 /* DeadlinesCell.swift */; };
+		75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */; };
+		75DC9DA32AD6D57A00324E21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DA22AD6D57A00324E21 /* SettingsViewController.swift */; };
+		75DC9DA62AD6D5DF00324E21 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DA52AD6D5DF00324E21 /* MenuCell.swift */; };
+		75DC9DA82AD6D9FF00324E21 /* MenuNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DA72AD6D9FF00324E21 /* MenuNotificationCell.swift */; };
+		B225C3B92AAC6AC700CFBEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */; };
+		B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3BD2AAC6B5100CFBEE5 /* Extension.swift */; };
+		B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */; };
+		B225C3C42AAEAACC00CFBEE5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3C32AAEAACC00CFBEE5 /* Colors.swift */; };
+		B225C3C72AAEAC2900CFBEE5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3C62AAEAC2900CFBEE5 /* MainController.swift */; };
+		B225C3CB2AAEAC4D00CFBEE5 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3CA2AAEAC4D00CFBEE5 /* BaseController.swift */; };
+		B225C3CD2AAEAC6100CFBEE5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3CC2AAEAC6100CFBEE5 /* Router.swift */; };
+		B225C3CF2AAEACA000CFBEE5 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3CE2AAEACA000CFBEE5 /* LoaderView.swift */; };
+		B225C3E32AAEAEDD00CFBEE5 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3E22AAEAEDD00CFBEE5 /* MainCell.swift */; };
+		B225C3F92AAEB1A100CFBEE5 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3E62AAEB1A000CFBEE5 /* Montserrat-LightItalic.ttf */; };
+		B225C3FA2AAEB1A100CFBEE5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3E72AAEB1A000CFBEE5 /* Montserrat-Medium.ttf */; };
+		B225C3FB2AAEB1A100CFBEE5 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3E82AAEB1A000CFBEE5 /* Montserrat-BoldItalic.ttf */; };
+		B225C3FC2AAEB1A100CFBEE5 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3E92AAEB1A000CFBEE5 /* Montserrat-Light.ttf */; };
+		B225C3FD2AAEB1A100CFBEE5 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3EA2AAEB1A000CFBEE5 /* Montserrat-ThinItalic.ttf */; };
+		B225C3FE2AAEB1A100CFBEE5 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3EB2AAEB1A000CFBEE5 /* Montserrat-ExtraLight.ttf */; };
+		B225C3FF2AAEB1A100CFBEE5 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3EC2AAEB1A000CFBEE5 /* Montserrat-Thin.ttf */; };
+		B225C4002AAEB1A100CFBEE5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3ED2AAEB1A000CFBEE5 /* Montserrat-Bold.ttf */; };
+		B225C4012AAEB1A100CFBEE5 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3EE2AAEB1A000CFBEE5 /* Montserrat-MediumItalic.ttf */; };
+		B225C4022AAEB1A100CFBEE5 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3EF2AAEB1A000CFBEE5 /* Montserrat-BlackItalic.ttf */; };
+		B225C4032AAEB1A100CFBEE5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F02AAEB1A000CFBEE5 /* Montserrat-SemiBold.ttf */; };
+		B225C4042AAEB1A100CFBEE5 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F12AAEB1A000CFBEE5 /* Montserrat-ExtraLightItalic.ttf */; };
+		B225C4052AAEB1A100CFBEE5 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F22AAEB1A000CFBEE5 /* Montserrat-ExtraBold.ttf */; };
+		B225C4062AAEB1A100CFBEE5 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F32AAEB1A000CFBEE5 /* OFL.txt */; };
+		B225C4072AAEB1A100CFBEE5 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F42AAEB1A000CFBEE5 /* Montserrat-Black.ttf */; };
+		B225C4082AAEB1A100CFBEE5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F52AAEB1A100CFBEE5 /* Montserrat-Regular.ttf */; };
+		B225C4092AAEB1A100CFBEE5 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F62AAEB1A100CFBEE5 /* Montserrat-Italic.ttf */; };
+		B225C40A2AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F72AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf */; };
+		B225C40B2AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F82AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf */; };
+		B225C40D2AAEB51E00CFBEE5 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C40C2AAEB51E00CFBEE5 /* CircularProgressView.swift */; };
+		B28547212AAC63E600EF057C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547202AAC63E600EF057C /* AppDelegate.swift */; };
+		B28547252AAC63E600EF057C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547242AAC63E600EF057C /* ViewController.swift */; };
+		B28547282AAC63E600EF057C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B28547262AAC63E600EF057C /* Main.storyboard */; };
+		B285472A2AAC63E900EF057C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B28547292AAC63E900EF057C /* Assets.xcassets */; };
+		B285472D2AAC63E900EF057C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B285472B2AAC63E900EF057C /* LaunchScreen.storyboard */; };
+		B28547352AAC668500EF057C /* AppCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547342AAC668500EF057C /* AppCenter.swift */; };
+		B28547382AAC68B600EF057C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547372AAC68B600EF057C /* TabBarController.swift */; };
+		B2D82BFC2AB67310001DEFB3 /* CreateGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D82BFB2AB67310001DEFB3 /* CreateGoalVC.swift */; };
+		B2D82BFE2AB6773A001DEFB3 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D82BFD2AB6773A001DEFB3 /* CheckBox.swift */; };
+		B2D82C002AB677E3001DEFB3 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */; };
+		B2D82C032AB7BC70001DEFB3 /* GoalDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D82C022AB7BC70001DEFB3 /* GoalDetailVC.swift */; };
+		CCDC93E6E43D0810134DA1A1 /* Pods_ToListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98739E31E773C25F9E0403CD /* Pods_ToListApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		753D1AEC2AC61E140017BCAA /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
+		75DC9D9A2AD6BEC900324E21 /* DeadlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesViewController.swift; sourceTree = "<group>"; };
+		75DC9D9D2AD6BF1A00324E21 /* DeadlinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesCell.swift; sourceTree = "<group>"; };
+		75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRightView.swift; sourceTree = "<group>"; };
+		75DC9DA22AD6D57A00324E21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		75DC9DA52AD6D5DF00324E21 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		75DC9DA72AD6D9FF00324E21 /* MenuNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNotificationCell.swift; sourceTree = "<group>"; };
+		8DEAE7E4C5FF52F9EB201112 /* Pods-ToListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToListApp.debug.xcconfig"; path = "Target Support Files/Pods-ToListApp/Pods-ToListApp.debug.xcconfig"; sourceTree = "<group>"; };
+		98739E31E773C25F9E0403CD /* Pods_ToListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B225C3B52AAC6A8B00CFBEE5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		B225C3B62AAC6A8B00CFBEE5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B225C3BA2AAC6AC700CFBEE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B225C3BC2AAC6AD000CFBEE5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B225C3BD2AAC6B5100CFBEE5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCenter.swift; sourceTree = "<group>"; };
+		B225C3C32AAEAACC00CFBEE5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B225C3C62AAEAC2900CFBEE5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		B225C3CA2AAEAC4D00CFBEE5 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		B225C3CC2AAEAC6100CFBEE5 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B225C3CE2AAEACA000CFBEE5 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		B225C3E22AAEAEDD00CFBEE5 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		B225C3E62AAEB1A000CFBEE5 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		B225C3E72AAEB1A000CFBEE5 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		B225C3E82AAEB1A000CFBEE5 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B225C3E92AAEB1A000CFBEE5 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		B225C3EA2AAEB1A000CFBEE5 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B225C3EB2AAEB1A000CFBEE5 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		B225C3EC2AAEB1A000CFBEE5 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		B225C3ED2AAEB1A000CFBEE5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		B225C3EE2AAEB1A000CFBEE5 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B225C3EF2AAEB1A000CFBEE5 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+		B225C3F02AAEB1A000CFBEE5 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		B225C3F12AAEB1A000CFBEE5 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		B225C3F22AAEB1A000CFBEE5 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		B225C3F32AAEB1A000CFBEE5 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		B225C3F42AAEB1A000CFBEE5 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		B225C3F52AAEB1A100CFBEE5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		B225C3F62AAEB1A100CFBEE5 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		B225C3F72AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		B225C3F82AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		B225C40C2AAEB51E00CFBEE5 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		B285471D2AAC63E600EF057C /* ToListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B28547202AAC63E600EF057C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B28547242AAC63E600EF057C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B28547272AAC63E600EF057C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B28547292AAC63E900EF057C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B285472C2AAC63E900EF057C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B285472E2AAC63E900EF057C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B28547342AAC668500EF057C /* AppCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCenter.swift; sourceTree = "<group>"; };
+		B28547372AAC68B600EF057C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B2D82BFB2AB67310001DEFB3 /* CreateGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalVC.swift; sourceTree = "<group>"; };
+		B2D82BFD2AB6773A001DEFB3 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
+		B2D82C022AB7BC70001DEFB3 /* GoalDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailVC.swift; sourceTree = "<group>"; };
+		F126D02C33CDF1C1B252F338 /* Pods-ToListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToListApp.release.xcconfig"; path = "Target Support Files/Pods-ToListApp/Pods-ToListApp.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B285471A2AAC63E600EF057C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCDC93E6E43D0810134DA1A1 /* Pods_ToListApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E8C4617C6A99BF0D57602DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DEAE7E4C5FF52F9EB201112 /* Pods-ToListApp.debug.xcconfig */,
+				F126D02C33CDF1C1B252F338 /* Pods-ToListApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		75DC9D992AD6BEB300324E21 /* Deadlines */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9D9A2AD6BEC900324E21 /* DeadlinesViewController.swift */,
+				75DC9D9C2AD6BF0300324E21 /* Cells + View */,
+			);
+			path = Deadlines;
+			sourceTree = "<group>";
+		};
+		75DC9D9C2AD6BF0300324E21 /* Cells + View */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9D9D2AD6BF1A00324E21 /* DeadlinesCell.swift */,
+				75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */,
+			);
+			path = "Cells + View";
+			sourceTree = "<group>";
+		};
+		75DC9DA12AD6D55E00324E21 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9DA22AD6D57A00324E21 /* SettingsViewController.swift */,
+				75DC9DA42AD6D5CA00324E21 /* Cells */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		75DC9DA42AD6D5CA00324E21 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9DA52AD6D5DF00324E21 /* MenuCell.swift */,
+				75DC9DA72AD6D9FF00324E21 /* MenuNotificationCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		90B671629255AE8F98415F44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98739E31E773C25F9E0403CD /* Pods_ToListApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B225C3BF2AAEA9C300CFBEE5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3D02AAEAD5300CFBEE5 /* Fonts */,
+				B225C3BD2AAC6B5100CFBEE5 /* Extension.swift */,
+				B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */,
+				B225C3C32AAEAACC00CFBEE5 /* Colors.swift */,
+				B225C3CC2AAEAC6100CFBEE5 /* Router.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		B225C3C02AAEA9C900CFBEE5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9DA12AD6D55E00324E21 /* Settings */,
+				75DC9D992AD6BEB300324E21 /* Deadlines */,
+				B2D82C012AB7BC65001DEFB3 /* GoalDetail */,
+				B2D82BFA2AB67303001DEFB3 /* CreateGoal */,
+				B225C3C52AAEAC1A00CFBEE5 /* Main */,
+				B28547362AAC68AC00EF057C /* TabBar */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B225C3C52AAEAC1A00CFBEE5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3E12AAEAED600CFBEE5 /* View + Cell */,
+				B225C3C62AAEAC2900CFBEE5 /* MainController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B225C3C92AAEAC4400CFBEE5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3CA2AAEAC4D00CFBEE5 /* BaseController.swift */,
+				B225C3CE2AAEACA000CFBEE5 /* LoaderView.swift */,
+				B225C40C2AAEB51E00CFBEE5 /* CircularProgressView.swift */,
+				B2D82BFD2AB6773A001DEFB3 /* CheckBox.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B225C3D02AAEAD5300CFBEE5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3E52AAEB1A000CFBEE5 /* Montserrat */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B225C3E12AAEAED600CFBEE5 /* View + Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3E22AAEAEDD00CFBEE5 /* MainCell.swift */,
+				753D1AEC2AC61E140017BCAA /* DoneView.swift */,
+			);
+			path = "View + Cell";
+			sourceTree = "<group>";
+		};
+		B225C3E52AAEB1A000CFBEE5 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3E62AAEB1A000CFBEE5 /* Montserrat-LightItalic.ttf */,
+				B225C3E72AAEB1A000CFBEE5 /* Montserrat-Medium.ttf */,
+				B225C3E82AAEB1A000CFBEE5 /* Montserrat-BoldItalic.ttf */,
+				B225C3E92AAEB1A000CFBEE5 /* Montserrat-Light.ttf */,
+				B225C3EA2AAEB1A000CFBEE5 /* Montserrat-ThinItalic.ttf */,
+				B225C3EB2AAEB1A000CFBEE5 /* Montserrat-ExtraLight.ttf */,
+				B225C3EC2AAEB1A000CFBEE5 /* Montserrat-Thin.ttf */,
+				B225C3ED2AAEB1A000CFBEE5 /* Montserrat-Bold.ttf */,
+				B225C3EE2AAEB1A000CFBEE5 /* Montserrat-MediumItalic.ttf */,
+				B225C3EF2AAEB1A000CFBEE5 /* Montserrat-BlackItalic.ttf */,
+				B225C3F02AAEB1A000CFBEE5 /* Montserrat-SemiBold.ttf */,
+				B225C3F12AAEB1A000CFBEE5 /* Montserrat-ExtraLightItalic.ttf */,
+				B225C3F22AAEB1A000CFBEE5 /* Montserrat-ExtraBold.ttf */,
+				B225C3F32AAEB1A000CFBEE5 /* OFL.txt */,
+				B225C3F42AAEB1A000CFBEE5 /* Montserrat-Black.ttf */,
+				B225C3F52AAEB1A100CFBEE5 /* Montserrat-Regular.ttf */,
+				B225C3F62AAEB1A100CFBEE5 /* Montserrat-Italic.ttf */,
+				B225C3F72AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf */,
+				B225C3F82AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf */,
+			);
+			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		B28547142AAC63E600EF057C = {
+			isa = PBXGroup;
+			children = (
+				B285471F2AAC63E600EF057C /* ToListApp */,
+				B285471E2AAC63E600EF057C /* Products */,
+				6E8C4617C6A99BF0D57602DA /* Pods */,
+				90B671629255AE8F98415F44 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B285471E2AAC63E600EF057C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B285471D2AAC63E600EF057C /* ToListApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B285471F2AAC63E600EF057C /* ToListApp */ = {
+			isa = PBXGroup;
+			children = (
+				B225C3C92AAEAC4400CFBEE5 /* Base */,
+				B225C3C02AAEA9C900CFBEE5 /* Modules */,
+				B225C3BF2AAEA9C300CFBEE5 /* Source */,
+				B28547202AAC63E600EF057C /* AppDelegate.swift */,
+				B28547242AAC63E600EF057C /* ViewController.swift */,
+				B28547262AAC63E600EF057C /* Main.storyboard */,
+				B28547292AAC63E900EF057C /* Assets.xcassets */,
+				B285472B2AAC63E900EF057C /* LaunchScreen.storyboard */,
+				B285472E2AAC63E900EF057C /* Info.plist */,
+				B28547342AAC668500EF057C /* AppCenter.swift */,
+				B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */,
+			);
+			path = ToListApp;
+			sourceTree = "<group>";
+		};
+		B28547362AAC68AC00EF057C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B28547372AAC68B600EF057C /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		B2D82BFA2AB67303001DEFB3 /* CreateGoal */ = {
+			isa = PBXGroup;
+			children = (
+				B2D82BFB2AB67310001DEFB3 /* CreateGoalVC.swift */,
+				B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */,
+			);
+			path = CreateGoal;
+			sourceTree = "<group>";
+		};
+		B2D82C012AB7BC65001DEFB3 /* GoalDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B2D82C022AB7BC70001DEFB3 /* GoalDetailVC.swift */,
+			);
+			path = GoalDetail;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B285471C2AAC63E600EF057C /* ToListApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B28547312AAC63E900EF057C /* Build configuration list for PBXNativeTarget "ToListApp" */;
+			buildPhases = (
+				7AF32E8091097AE7BB591336 /* [CP] Check Pods Manifest.lock */,
+				B28547192AAC63E600EF057C /* Sources */,
+				B285471A2AAC63E600EF057C /* Frameworks */,
+				B285471B2AAC63E600EF057C /* Resources */,
+				19A9FEFB326AE2BCABAEAD5B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToListApp;
+			productName = ToListApp;
+			productReference = B285471D2AAC63E600EF057C /* ToListApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B28547152AAC63E600EF057C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					B285471C2AAC63E600EF057C = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = B28547182AAC63E600EF057C /* Build configuration list for PBXProject "ToListApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ru,
+			);
+			mainGroup = B28547142AAC63E600EF057C;
+			productRefGroup = B285471E2AAC63E600EF057C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B285471C2AAC63E600EF057C /* ToListApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B285471B2AAC63E600EF057C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B225C40B2AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				B225C4082AAEB1A100CFBEE5 /* Montserrat-Regular.ttf in Resources */,
+				B225C3FC2AAEB1A100CFBEE5 /* Montserrat-Light.ttf in Resources */,
+				B285472D2AAC63E900EF057C /* LaunchScreen.storyboard in Resources */,
+				B225C3FE2AAEB1A100CFBEE5 /* Montserrat-ExtraLight.ttf in Resources */,
+				B225C3B92AAC6AC700CFBEE5 /* Localizable.strings in Resources */,
+				B225C40A2AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				B225C3FB2AAEB1A100CFBEE5 /* Montserrat-BoldItalic.ttf in Resources */,
+				B285472A2AAC63E900EF057C /* Assets.xcassets in Resources */,
+				B225C4022AAEB1A100CFBEE5 /* Montserrat-BlackItalic.ttf in Resources */,
+				B225C4072AAEB1A100CFBEE5 /* Montserrat-Black.ttf in Resources */,
+				B225C4032AAEB1A100CFBEE5 /* Montserrat-SemiBold.ttf in Resources */,
+				B225C4012AAEB1A100CFBEE5 /* Montserrat-MediumItalic.ttf in Resources */,
+				B225C4062AAEB1A100CFBEE5 /* OFL.txt in Resources */,
+				B225C4092AAEB1A100CFBEE5 /* Montserrat-Italic.ttf in Resources */,
+				B225C3FA2AAEB1A100CFBEE5 /* Montserrat-Medium.ttf in Resources */,
+				B225C3FF2AAEB1A100CFBEE5 /* Montserrat-Thin.ttf in Resources */,
+				B225C4002AAEB1A100CFBEE5 /* Montserrat-Bold.ttf in Resources */,
+				B225C3FD2AAEB1A100CFBEE5 /* Montserrat-ThinItalic.ttf in Resources */,
+				B225C4042AAEB1A100CFBEE5 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				B28547282AAC63E600EF057C /* Main.storyboard in Resources */,
+				B225C4052AAEB1A100CFBEE5 /* Montserrat-ExtraBold.ttf in Resources */,
+				B225C3F92AAEB1A100CFBEE5 /* Montserrat-LightItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19A9FEFB326AE2BCABAEAD5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ToListApp/Pods-ToListApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ToListApp/Pods-ToListApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ToListApp/Pods-ToListApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AF32E8091097AE7BB591336 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToListApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B28547192AAC63E600EF057C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B225C3C72AAEAC2900CFBEE5 /* MainController.swift in Sources */,
+				B225C3CF2AAEACA000CFBEE5 /* LoaderView.swift in Sources */,
+				B225C3E32AAEAEDD00CFBEE5 /* MainCell.swift in Sources */,
+				75DC9D9E2AD6BF1A00324E21 /* DeadlinesCell.swift in Sources */,
+				B225C3CB2AAEAC4D00CFBEE5 /* BaseController.swift in Sources */,
+				75DC9D9B2AD6BEC900324E21 /* DeadlinesViewController.swift in Sources */,
+				B225C3CD2AAEAC6100CFBEE5 /* Router.swift in Sources */,
+				75DC9DA62AD6D5DF00324E21 /* MenuCell.swift in Sources */,
+				75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */,
+				B2D82C002AB677E3001DEFB3 /* WeekCell.swift in Sources */,
+				B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */,
+				B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */,
+				B28547352AAC668500EF057C /* AppCenter.swift in Sources */,
+				B225C3C42AAEAACC00CFBEE5 /* Colors.swift in Sources */,
+				75DC9DA32AD6D57A00324E21 /* SettingsViewController.swift in Sources */,
+				B28547382AAC68B600EF057C /* TabBarController.swift in Sources */,
+				75DC9DA82AD6D9FF00324E21 /* MenuNotificationCell.swift in Sources */,
+				B28547252AAC63E600EF057C /* ViewController.swift in Sources */,
+				B2D82BFC2AB67310001DEFB3 /* CreateGoalVC.swift in Sources */,
+				B225C40D2AAEB51E00CFBEE5 /* CircularProgressView.swift in Sources */,
+				753D1AED2AC61E140017BCAA /* DoneView.swift in Sources */,
+				B28547212AAC63E600EF057C /* AppDelegate.swift in Sources */,
+				B2D82BFE2AB6773A001DEFB3 /* CheckBox.swift in Sources */,
+				B2D82C032AB7BC70001DEFB3 /* GoalDetailVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B225C3BA2AAC6AC700CFBEE5 /* en */,
+				B225C3BC2AAC6AD000CFBEE5 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B28547262AAC63E600EF057C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B28547272AAC63E600EF057C /* Base */,
+				B225C3B52AAC6A8B00CFBEE5 /* ru */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B285472B2AAC63E900EF057C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B285472C2AAC63E900EF057C /* Base */,
+				B225C3B62AAC6A8B00CFBEE5 /* ru */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B285472F2AAC63E900EF057C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B28547302AAC63E900EF057C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B28547322AAC63E900EF057C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DEAE7E4C5FF52F9EB201112 /* Pods-ToListApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PNQCPAM62S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToListApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.ToListApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B28547332AAC63E900EF057C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F126D02C33CDF1C1B252F338 /* Pods-ToListApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PNQCPAM62S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToListApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.ToListApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B28547182AAC63E600EF057C /* Build configuration list for PBXProject "ToListApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B285472F2AAC63E900EF057C /* Debug */,
+				B28547302AAC63E900EF057C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B28547312AAC63E900EF057C /* Build configuration list for PBXNativeTarget "ToListApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B28547322AAC63E900EF057C /* Debug */,
+				B28547332AAC63E900EF057C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B28547152AAC63E600EF057C /* Project object */;
+}
