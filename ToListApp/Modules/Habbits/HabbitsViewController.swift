@@ -103,7 +103,8 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = HabbitDetailVC()
         vc.modalPresentationStyle = .overCurrentContext
-        Router.shared.show(vc)    }
+        Router.shared.show(vc)
+    }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
             completionHandler(true)

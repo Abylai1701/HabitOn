@@ -98,7 +98,8 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = GoalDetailVC()
+        Router.shared.push(vc)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? { nil }
     
@@ -135,5 +136,3 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
         return trailingSwipeConfiguration
     }
 }
-
-

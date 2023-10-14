@@ -1,13 +1,14 @@
 import Foundation
 import UIKit
 
-final class HabbitDetailVC: UIViewController {
+final class EditGoalVC: UIViewController {
     
     //MARK: - Properties
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
-    
+    private lazy var buttonsStack = UIStackView()
+
     private lazy var shadowView: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -21,29 +22,7 @@ final class HabbitDetailVC: UIViewController {
         container.layer.cornerRadius = 30
         return container
     }()
-    private lazy var closeButton: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "exit_icon")
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-    private lazy var deleteButton: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "delete_icon")
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-    private lazy var rebootButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .scarletColor
-        button.layer.cornerRadius = 22
-        button.setTitle("Перезагрузить", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        button.setTitleColor(.blueColor, for: .normal)
-
-        return button
-    }()
-    private lazy var habbitField: UITextField = {
+    private lazy var goalField: UITextField = {
         let field = UITextField()
         field.layer.borderWidth = 1
         field.text = "Goal"
@@ -58,6 +37,38 @@ final class HabbitDetailVC: UIViewController {
         field.textColor = .white
         return field
     }()
+    private lazy var notifyButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Group"),
+                        for: .normal)
+        button.backgroundColor = .blueText
+        button.layer.cornerRadius = 30
+        button.layer.masksToBounds = true
+        return button
+    }()
+    private lazy var n21Button: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "21"),
+                        for: .normal)
+        button.backgroundColor = .blueText
+        button.layer.cornerRadius = 30
+        button.layer.masksToBounds = true
+        return button
+    }()
+    private lazy var repeatLabel: UILabel = {
+        let label = UILabel()
+        label.font = .montserratSemiBold(ofSize: 14)
+        label.textColor = .white
+        label.text = "repeat_every_day".localized
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    private lazy var checkBox: CheckBox = {
+        let view = CheckBox()
+        view.isChecked = false
+        return view
+    }()
     private lazy var collectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .horizontal
@@ -68,10 +79,30 @@ final class HabbitDetailVC: UIViewController {
         collection.backgroundColor = .clear
         collection.allowsSelection = true
         collection.showsHorizontalScrollIndicator = false
-        collection.register(ColourCell.self, forCellWithReuseIdentifier: ColourCell.cellId)
+        collection.register(WeekCell.self, forCellWithReuseIdentifier: WeekCell.cellId)
         return collection
     }()
-
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .scarletColor
+        button.layer.cornerRadius = 22
+        button.setTitle("Удалить", for: .normal)
+        button.titleLabel?.font = .montserratSemiBold(ofSize: 14)
+        button.setTitleColor(.blueColor, for: .normal)
+        
+        return button
+    }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 22
+        button.setTitle("Сохранить", for: .normal)
+        button.titleLabel?.font = .montserratSemiBold(ofSize: 14)
+        button.setTitleColor(.blueColor, for: .normal)
+        
+        return button
+    }()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,43 +122,65 @@ final class HabbitDetailVC: UIViewController {
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
             make.left.equalToSuperview()
-            make.height.equalTo(500)
+            make.height.equalTo(380)
         }
         container.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-        container.addSubviews(closeButton,
-                              deleteButton,
-                              rebootButton,
-                              habbitField,
-                              collectionView)
-        closeButton.snp.makeConstraints { make in
+        container.addSubviews(goalField, notifyButton, n21Button,
+                              repeatLabel, checkBox, collectionView,
+                              buttonsStack)
+        goalField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
-            make.left.equalToSuperview().offset(22)
-            make.height.width.equalTo(22)
-        }
-        deleteButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-24)
-            make.height.width.equalTo(24)
-        }
-        rebootButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.height.equalTo(45)
-            make.top.equalTo(deleteButton.snp.bottom).offset(14)
-        }
-        habbitField.snp.makeConstraints { make in
-            make.top.equalTo(rebootButton.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
             make.height.equalTo(44)
         }
+        notifyButton.snp.makeConstraints { make in
+            make.top.equalTo(goalField.snp.bottom).offset(40)
+            make.width.height.equalTo(60)
+            make.left.equalToSuperview().offset(64)
+        }
+        n21Button.snp.makeConstraints { make in
+            make.top.equalTo(goalField.snp.bottom).offset(40)
+            make.width.height.equalTo(60)
+            make.right.equalToSuperview().offset(-64)
+        }
+        repeatLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.top.equalTo(n21Button.snp.bottom).offset(22)
+        }
+        checkBox.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-24)
+            make.height.width.equalTo(21)
+            make.centerY.equalTo(repeatLabel)
+        }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(habbitField.snp.bottom).offset(16)
+            make.top.equalTo(checkBox.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(45)
         }
+    
+        buttonsStack.addArrangedSubview(deleteButton)
+        buttonsStack.addArrangedSubview(saveButton)
+        buttonsStack.axis = .horizontal
+        buttonsStack.spacing = 12
+        buttonsStack.distribution = .fillEqually
         
+        deleteButton.snp.makeConstraints { make in
+            make.height.equalTo(45)
+            make.width.equalTo(153)
+        }
+        
+        saveButton.snp.makeConstraints { make in
+            make.height.equalTo(45)
+            make.width.equalTo(153)
+        }
+        
+        buttonsStack.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(48)
+            make.left.equalToSuperview().offset(24)
+            make.right.equalToSuperview().offset(-24)
+        }
     }
     // MARK: - Actions
     @objc func tapShadow() -> Void {
@@ -163,12 +216,12 @@ final class HabbitDetailVC: UIViewController {
             }
     }
 }
-extension HabbitDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension EditGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColourCell.cellId, for: indexPath) as! ColourCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
         
         return cell
     }
