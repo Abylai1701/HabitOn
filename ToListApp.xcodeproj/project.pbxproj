@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		753D1AED2AC61E140017BCAA /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D1AEC2AC61E140017BCAA /* DoneView.swift */; };
 		75DC9D9B2AD6BEC900324E21 /* HabbitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */; };
 		75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */; };
 		75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */; };
@@ -26,6 +25,24 @@
 		75DC9DC22AD9EE7600324E21 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DC12AD9EE7600324E21 /* SectionHeaderView.swift */; };
 		75DC9DC42AD9FB8700324E21 /* HabbitDetailThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DC32AD9FB8700324E21 /* HabbitDetailThirdCell.swift */; };
 		75DC9DC72ADA9CAF00324E21 /* EditGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DC62ADA9CAF00324E21 /* EditGoalVC.swift */; };
+		75DC9DCA2ADC424C00324E21 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DC92ADC424C00324E21 /* UserManager.swift */; };
+		75DC9DCC2ADC42A600324E21 /* APIRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DCB2ADC42A600324E21 /* APIRoutes.swift */; };
+		75DC9DEA2ADC453200324E21 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DE92ADC453200324E21 /* Extensions.swift */; };
+		75DC9DEC2ADC462600324E21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DEB2ADC462600324E21 /* MainViewModel.swift */; };
+		75DC9DEE2ADC468500324E21 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9DED2ADC468500324E21 /* GoalModel.swift */; };
+		75DC9E962ADC534F00324E21 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E952ADC534F00324E21 /* Loopable.swift */; };
+		75DC9EA42ADC61C100324E21 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E992ADC61C000324E21 /* NetworkRouter.swift */; };
+		75DC9EA52ADC61C100324E21 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9A2ADC61C000324E21 /* NetworkResponse.swift */; };
+		75DC9EA62ADC61C100324E21 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9B2ADC61C000324E21 /* Result.swift */; };
+		75DC9EA72ADC61C100324E21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9C2ADC61C000324E21 /* NetworkManager.swift */; };
+		75DC9EA82ADC61C100324E21 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9D2ADC61C000324E21 /* Response.swift */; };
+		75DC9EA92ADC61C100324E21 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9E2ADC61C000324E21 /* Observable.swift */; };
+		75DC9EAA2ADC61C100324E21 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9E9F2ADC61C000324E21 /* Parser.swift */; };
+		75DC9EAB2ADC61C100324E21 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EA02ADC61C000324E21 /* EndpointType.swift */; };
+		75DC9EAC2ADC61C100324E21 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EA22ADC61C000324E21 /* Endpoints.swift */; };
+		75DC9EAD2ADC61C100324E21 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EA32ADC61C000324E21 /* ParseManager.swift */; };
+		75DC9EAF2ADC85CC00324E21 /* GoalDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EAE2ADC85CC00324E21 /* GoalDetailViewModel.swift */; };
+		75DC9EB12ADC863C00324E21 /* GoalDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EB02ADC863C00324E21 /* GoalDetailModel.swift */; };
 		B225C3B92AAC6AC700CFBEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */; };
 		B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3BD2AAC6B5100CFBEE5 /* Extension.swift */; };
 		B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */; };
@@ -69,7 +86,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		753D1AEC2AC61E140017BCAA /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewController.swift; sourceTree = "<group>"; };
 		75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCell.swift; sourceTree = "<group>"; };
 		75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRightView.swift; sourceTree = "<group>"; };
@@ -88,6 +104,24 @@
 		75DC9DC12AD9EE7600324E21 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		75DC9DC32AD9FB8700324E21 /* HabbitDetailThirdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitDetailThirdCell.swift; sourceTree = "<group>"; };
 		75DC9DC62ADA9CAF00324E21 /* EditGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalVC.swift; sourceTree = "<group>"; };
+		75DC9DC92ADC424C00324E21 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		75DC9DCB2ADC42A600324E21 /* APIRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutes.swift; sourceTree = "<group>"; };
+		75DC9DE92ADC453200324E21 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		75DC9DEB2ADC462600324E21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		75DC9DED2ADC468500324E21 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
+		75DC9E952ADC534F00324E21 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
+		75DC9E992ADC61C000324E21 /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		75DC9E9A2ADC61C000324E21 /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		75DC9E9B2ADC61C000324E21 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		75DC9E9C2ADC61C000324E21 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		75DC9E9D2ADC61C000324E21 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		75DC9E9E2ADC61C000324E21 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		75DC9E9F2ADC61C000324E21 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		75DC9EA02ADC61C000324E21 /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		75DC9EA22ADC61C000324E21 /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		75DC9EA32ADC61C000324E21 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
+		75DC9EAE2ADC85CC00324E21 /* GoalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewModel.swift; sourceTree = "<group>"; };
+		75DC9EB02ADC863C00324E21 /* GoalDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailModel.swift; sourceTree = "<group>"; };
 		8DEAE7E4C5FF52F9EB201112 /* Pods-ToListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToListApp.debug.xcconfig"; path = "Target Support Files/Pods-ToListApp/Pods-ToListApp.debug.xcconfig"; sourceTree = "<group>"; };
 		98739E31E773C25F9E0403CD /* Pods_ToListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B225C3B52AAC6A8B00CFBEE5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -163,8 +197,8 @@
 			children = (
 				75DC9DAE2AD7502700324E21 /* HabbitDetail */,
 				75DC9DA92AD7485B00324E21 /* CreateHabbit */,
-				75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */,
 				75DC9D9C2AD6BF0300324E21 /* Cells + View */,
+				75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */,
 			);
 			path = Habbits;
 			sourceTree = "<group>";
@@ -228,8 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				75DC9DB72AD98E5100324E21 /* GoalDetailVC.swift */,
+				75DC9EAE2ADC85CC00324E21 /* GoalDetailViewModel.swift */,
+				75DC9EB02ADC863C00324E21 /* GoalDetailModel.swift */,
 				75DC9DB92AD98FB600324E21 /* Cells + View */,
-				75DC9DC52ADA9C9700324E21 /* EditGoalVC */,
 			);
 			path = GoalDetail;
 			sourceTree = "<group>";
@@ -253,6 +288,39 @@
 			path = EditGoalVC;
 			sourceTree = "<group>";
 		};
+		75DC9E972ADC61C000324E21 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9E982ADC61C000324E21 /* NetworkManager */,
+				75DC9EA12ADC61C000324E21 /* Parser */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		75DC9E982ADC61C000324E21 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9E992ADC61C000324E21 /* NetworkRouter.swift */,
+				75DC9E9A2ADC61C000324E21 /* NetworkResponse.swift */,
+				75DC9E9B2ADC61C000324E21 /* Result.swift */,
+				75DC9E9C2ADC61C000324E21 /* NetworkManager.swift */,
+				75DC9E9D2ADC61C000324E21 /* Response.swift */,
+				75DC9E9E2ADC61C000324E21 /* Observable.swift */,
+				75DC9E9F2ADC61C000324E21 /* Parser.swift */,
+				75DC9EA02ADC61C000324E21 /* EndpointType.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		75DC9EA12ADC61C000324E21 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				75DC9EA22ADC61C000324E21 /* Endpoints.swift */,
+				75DC9EA32ADC61C000324E21 /* ParseManager.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		90B671629255AE8F98415F44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +337,9 @@
 				B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */,
 				B225C3C32AAEAACC00CFBEE5 /* Colors.swift */,
 				B225C3CC2AAEAC6100CFBEE5 /* Router.swift */,
+				75DC9DC92ADC424C00324E21 /* UserManager.swift */,
+				75DC9DCB2ADC42A600324E21 /* APIRoutes.swift */,
+				75DC9E952ADC534F00324E21 /* Loopable.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -278,7 +349,6 @@
 			children = (
 				B225C3C52AAEAC1A00CFBEE5 /* Main */,
 				75DC9D992AD6BEB300324E21 /* Habbits */,
-				B2D82C012AB7BC65001DEFB3 /* GoalDetail */,
 				75DC9DA12AD6D55E00324E21 /* Settings */,
 				B28547362AAC68AC00EF057C /* TabBar */,
 			);
@@ -288,10 +358,13 @@
 		B225C3C52AAEAC1A00CFBEE5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				75DC9DC52ADA9C9700324E21 /* EditGoalVC */,
 				75DC9DB62AD98E3E00324E21 /* GoalDetail */,
 				B2D82BFA2AB67303001DEFB3 /* CreateGoal */,
 				B225C3E12AAEAED600CFBEE5 /* View + Cell */,
 				B225C3C62AAEAC2900CFBEE5 /* MainController.swift */,
+				75DC9DEB2ADC462600324E21 /* MainViewModel.swift */,
+				75DC9DED2ADC468500324E21 /* GoalModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -319,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				B225C3E22AAEAEDD00CFBEE5 /* MainCell.swift */,
-				753D1AEC2AC61E140017BCAA /* DoneView.swift */,
 			);
 			path = "View + Cell";
 			sourceTree = "<group>";
@@ -371,6 +443,7 @@
 		B285471F2AAC63E600EF057C /* ToListApp */ = {
 			isa = PBXGroup;
 			children = (
+				75DC9E972ADC61C000324E21 /* API */,
 				B225C3C92AAEAC4400CFBEE5 /* Base */,
 				B225C3C02AAEA9C900CFBEE5 /* Modules */,
 				B225C3BF2AAEA9C300CFBEE5 /* Source */,
@@ -382,6 +455,7 @@
 				B285472E2AAC63E900EF057C /* Info.plist */,
 				B28547342AAC668500EF057C /* AppCenter.swift */,
 				B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */,
+				75DC9DE92ADC453200324E21 /* Extensions.swift */,
 			);
 			path = ToListApp;
 			sourceTree = "<group>";
@@ -401,13 +475,6 @@
 				B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */,
 			);
 			path = CreateGoal;
-			sourceTree = "<group>";
-		};
-		B2D82C012AB7BC65001DEFB3 /* GoalDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GoalDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -546,9 +613,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DC9DEC2ADC462600324E21 /* MainViewModel.swift in Sources */,
+				75DC9EAD2ADC61C100324E21 /* ParseManager.swift in Sources */,
+				75DC9EAF2ADC85CC00324E21 /* GoalDetailViewModel.swift in Sources */,
+				75DC9EAA2ADC61C100324E21 /* Parser.swift in Sources */,
 				B225C3C72AAEAC2900CFBEE5 /* MainController.swift in Sources */,
 				B225C3CF2AAEACA000CFBEE5 /* LoaderView.swift in Sources */,
 				75DC9DB52AD75E0D00324E21 /* HabbitDetailSecondCell.swift in Sources */,
+				75DC9EA82ADC61C100324E21 /* Response.swift in Sources */,
+				75DC9EA72ADC61C100324E21 /* NetworkManager.swift in Sources */,
 				B225C3E32AAEAEDD00CFBEE5 /* MainCell.swift in Sources */,
 				75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */,
 				B225C3CB2AAEAC4D00CFBEE5 /* BaseController.swift in Sources */,
@@ -558,29 +631,40 @@
 				75DC9DA62AD6D5DF00324E21 /* MenuCell.swift in Sources */,
 				75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */,
 				75DC9DBF2AD9EAE600324E21 /* HistoryCell.swift in Sources */,
+				75DC9E962ADC534F00324E21 /* Loopable.swift in Sources */,
 				B2D82C002AB677E3001DEFB3 /* WeekCell.swift in Sources */,
+				75DC9EA42ADC61C100324E21 /* NetworkRouter.swift in Sources */,
 				B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */,
 				B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */,
 				B28547352AAC668500EF057C /* AppCenter.swift in Sources */,
 				75DC9DB82AD98E5100324E21 /* GoalDetailVC.swift in Sources */,
+				75DC9EA92ADC61C100324E21 /* Observable.swift in Sources */,
 				B225C3C42AAEAACC00CFBEE5 /* Colors.swift in Sources */,
+				75DC9DCA2ADC424C00324E21 /* UserManager.swift in Sources */,
 				75DC9DA32AD6D57A00324E21 /* SettingsViewController.swift in Sources */,
+				75DC9EA52ADC61C100324E21 /* NetworkResponse.swift in Sources */,
 				B28547382AAC68B600EF057C /* TabBarController.swift in Sources */,
 				75DC9DA82AD6D9FF00324E21 /* MenuNotificationCell.swift in Sources */,
 				B28547252AAC63E600EF057C /* ViewController.swift in Sources */,
+				75DC9EAC2ADC61C100324E21 /* Endpoints.swift in Sources */,
 				B2D82BFC2AB67310001DEFB3 /* CreateGoalVC.swift in Sources */,
+				75DC9EAB2ADC61C100324E21 /* EndpointType.swift in Sources */,
 				75DC9DC42AD9FB8700324E21 /* HabbitDetailThirdCell.swift in Sources */,
 				75DC9DC22AD9EE7600324E21 /* SectionHeaderView.swift in Sources */,
+				75DC9DEE2ADC468500324E21 /* GoalModel.swift in Sources */,
 				75DC9DAB2AD7487700324E21 /* CreateHabbitViewController.swift in Sources */,
 				75DC9DB02AD7503B00324E21 /* HabbitDetailVC.swift in Sources */,
 				B225C40D2AAEB51E00CFBEE5 /* CircularProgressView.swift in Sources */,
 				75DC9DB32AD759F000324E21 /* HabbitDetailFirstCell.swift in Sources */,
-				753D1AED2AC61E140017BCAA /* DoneView.swift in Sources */,
 				B28547212AAC63E600EF057C /* AppDelegate.swift in Sources */,
+				75DC9DCC2ADC42A600324E21 /* APIRoutes.swift in Sources */,
 				75DC9DBB2AD9910000324E21 /* GoalProgressCell.swift in Sources */,
 				75DC9DAD2AD74A0300324E21 /* ColourCell.swift in Sources */,
+				75DC9DEA2ADC453200324E21 /* Extensions.swift in Sources */,
 				75DC9DBD2AD999D400324E21 /* GoalWeekCell.swift in Sources */,
+				75DC9EA62ADC61C100324E21 /* Result.swift in Sources */,
 				B2D82BFE2AB6773A001DEFB3 /* CheckBox.swift in Sources */,
+				75DC9EB12ADC863C00324E21 /* GoalDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

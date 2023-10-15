@@ -1,8 +1,39 @@
 import UIKit
 
+enum DayOfWeek {
+    case monday
+    case thuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
+    
+    var title:String {
+        switch self {
+        case .monday: return "Пн"
+        case .thuesday: return "Вт"
+        case .wednesday: return "Ср"
+        case .thursday: return "Чт"
+        case .friday: return "Пт"
+        case .saturday: return "Сб"
+        case .sunday: return "Вс"
+        }
+    }
+}
+
 class GoalWeekCell: UITableViewCell {
     
     //MARK: - Properties
+    private var weekModel: GoalDetailModel? = nil
+    let days: [DayOfWeek] = [.monday,
+                             .thuesday,
+                             .wednesday,
+                             .thursday,
+                             .friday,
+                             .saturday,
+                             .sunday]
+    
     private lazy var container: UIView = {
         let container = UIView()
         container.backgroundColor = .blueColor
@@ -10,7 +41,6 @@ class GoalWeekCell: UITableViewCell {
         container.layer.cornerRadius = 15
         return container
     }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 14)
@@ -62,12 +92,11 @@ class GoalWeekCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-    
     private lazy var currentTime: UILabel = {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 16)
         label.textColor = .white
-        label.text = "26 раз"
+        label.text = ""
         label.numberOfLines = 1
         return label
     }()
@@ -88,24 +117,23 @@ class GoalWeekCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
     }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     //MARK: - Setup Views
     private func setupViews() {
         contentView.isUserInteractionEnabled = true
         selectionStyle = .none
         backgroundColor = .white
         addSubviews(container,container2)
+        
         container.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().offset(-24)
         }
         container.addSubviews(titleLabel,collectionView)
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(8)
@@ -160,16 +188,20 @@ class GoalWeekCell: UITableViewCell {
             make.top.equalToSuperview().offset(30)
         }
     }
+    func configure(model: GoalDetailModel?) {
+        self.weekModel = model
+        self.currentTime.text = "\(model?.currentSeries ?? 667) раз"
+        self.recordTime.text = "\(model?.longestSeries ?? 667) раз подряд"
+        self.collectionView.reloadData()
+    }
 }
 extension GoalWeekCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
-        
+        let days = self.days[indexPath.row]
+        cell.configure(day: days, model: weekModel )
         return cell
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

@@ -37,7 +37,6 @@ class SectionHeaderView: UIView {
         }
         titleLabel.text = title
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

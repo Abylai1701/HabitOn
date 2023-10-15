@@ -14,9 +14,13 @@ final class GoalDetailVC: BaseController {
                                           .second,
                                           .third]
     
+    private let viewModel: GoalDetailViewModelLogic = GoalDetailViewModel()
+    private var goalModel: GoalDetailModel?
+
     var closeAction : (()->())?
     var shareAction: (()->())?
-    
+    private var id: Int
+
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "exit_icon2"), for: .normal)
@@ -41,7 +45,6 @@ final class GoalDetailVC: BaseController {
         view.contentMode = .scaleAspectFit
         return view
     }()
-    
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(GoalProgressCell.self,
@@ -57,14 +60,33 @@ final class GoalDetailVC: BaseController {
         
         return table
     }()
+    // MARK: - Init
+    init(id: Int) {
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         setupViews()
+        bind()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchGoalDetail(id: self.id)
+    }
+    func bind() {
+        viewModel.goalDetail.observe(on: self) { goal in
+            self.goalModel = goal
+            self.tableView.reloadData()
+        }
+    }
     //MARK: - Setup Functions
     private func setupViews() -> Void {
         
@@ -92,7 +114,6 @@ final class GoalDetailVC: BaseController {
             make.top.equalTo(deleteButton.snp.bottom).offset(16)
             make.left.right.bottom.equalToSuperview()
         }
-        
     }
     // MARK: - Actions
     @objc func tapShadow() -> Void {
@@ -134,23 +155,18 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .first:
             let cell = tableView.dequeueReusableCell(withIdentifier: GoalProgressCell.cellId, for: indexPath) as! GoalProgressCell
+            cell.configure(model: goalModel)
             return cell
         case .second:
             let cell = tableView.dequeueReusableCell(withIdentifier: GoalWeekCell.cellId, for: indexPath) as! GoalWeekCell
+            cell.configure(model: goalModel)
             return cell
         case .third:
             let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.cellId, for: indexPath) as! HistoryCell
             return cell
-        default:
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
-            return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let section = sections[section]
         
@@ -161,7 +177,6 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
            return nil
         }
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = sections[section]
         
@@ -186,5 +201,3 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         UITableView.automaticDimension
     }
 }
-
-

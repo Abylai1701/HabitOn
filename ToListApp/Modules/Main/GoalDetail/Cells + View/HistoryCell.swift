@@ -9,7 +9,6 @@ class HistoryCell: UITableViewCell {
         container.clipsToBounds = true
         return container
     }()
-    
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 11)
@@ -19,7 +18,6 @@ class HistoryCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
-    
     private lazy var doneLabel: UILabel = {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 11)
@@ -45,18 +43,16 @@ class HistoryCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
     }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     //MARK: - Setup Views
     private func setupViews() {
         contentView.isUserInteractionEnabled = true
         selectionStyle = .none
         backgroundColor = .white
         addSubviews(container)
+        
         container.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(24)

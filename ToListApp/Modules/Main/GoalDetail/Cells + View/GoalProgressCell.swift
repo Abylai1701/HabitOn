@@ -47,7 +47,6 @@ class GoalProgressCell: UITableViewCell {
         let view = CircularProgressView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), lineWidth: 10, rounded: false)
         view.trackColor = .white
         view.progressColor = .whiteBlue
-        
         return view
     }()
     private lazy var countLabel: UILabel = {
@@ -62,12 +61,9 @@ class GoalProgressCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
     }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     //MARK: - Setup Views
     private func setupViews() {
         contentView.isUserInteractionEnabled = true
@@ -118,13 +114,13 @@ class GoalProgressCell: UITableViewCell {
         }
         progressView.progress = 0.6
     }
-    
-    //MARK: - Configure
-    //    func configure(model: [EventModel]) {
-    //        self.events = model
-    //        collectionView.snp.updateConstraints { make in
-    //            make.height.equalTo(model.count>0 ? 200 : 0)
-    //        }
-    //        self.collectionView.reloadData()
-    //    }
+    func configure(model: GoalDetailModel?) {
+        guard let model = model else {
+            return
+        }
+        titleLabel.text = model.name
+        let progress = Int((model.iterationCount ?? 500))
+        progressView.progress = Float(progress) * 0.04
+        countLabel.text = "\(model.iterationCount ?? 6)"
+    }
 }

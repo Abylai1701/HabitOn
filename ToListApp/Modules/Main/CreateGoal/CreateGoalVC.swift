@@ -106,7 +106,6 @@ final class CreateGoalVC: UIViewController {
         view.backgroundColor = .clear
         setupViews()
     }
-    
     //MARK: - Setup Functions
     private func setupViews() -> Void {
         
@@ -198,15 +197,10 @@ final class CreateGoalVC: UIViewController {
     }
 }
 extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
-        
         return cell
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
-
 }

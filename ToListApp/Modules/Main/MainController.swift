@@ -3,6 +3,9 @@ import UIKit
 final class MainController: BaseController {
     
     //MARK: - Properties
+    private let viewModel: MainViewModelLogic = MainViewModel()
+    private var goals: [GoalModel] = []
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(MainCell.self,
@@ -10,17 +13,8 @@ final class MainController: BaseController {
         table.backgroundColor = .white
         table.delegate = self
         table.dataSource = self
-        
         return table
     }()
-    
-    private lazy var yourLeftView: DoneView = {
-        let view = DoneView()
-        tableView.addSubview(view)
-        view.frame = CGRect(x: -view.frame.width, y: 0, width: view.frame.width, height: tableView.bounds.size.height)
-        return view
-    }()
-    
     private lazy var createButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blueColor
@@ -47,10 +41,23 @@ final class MainController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        bind()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchGoals()
     }
     
+    private func bind(){
+        viewModel.goals.observe(on: self) { goals in
+            self.goals = goals
+            print(goals,"Log")
+            self.tableView.reloadData()
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true,
                                                      animated: true)
     }
@@ -71,8 +78,6 @@ final class MainController: BaseController {
             make.height.equalTo(45)
         }
     }
-    
-    
     //MARK: - Functions
     @objc
     private func tapCreate() {
@@ -81,30 +86,28 @@ final class MainController: BaseController {
         Router.shared.show(vc)
     }
 }
-
-
 //MARK: - TableView Delegate
 extension MainController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        1
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return goals.count
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: MainCell.cellId,
             for: indexPath) as! MainCell
-        
+        cell.configure(model: goals[indexPath.section])
+
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = GoalDetailVC()
+        let vc = GoalDetailVC(id: goals[indexPath.section].id)
         Router.shared.push(vc)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? { nil }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { 0 }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
@@ -121,7 +124,6 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
         
         return leadingSwipeConfiguration
     }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // Создайте действие для свайпа вправо
         let rightAction = UIContextualAction(style: .normal, title: "Изменить") { (action, view, completionHandler) in

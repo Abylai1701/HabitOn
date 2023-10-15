@@ -3,13 +3,6 @@ import UIKit
 class MainCell: UITableViewCell {
     
     //MARK: - Properties
-    lazy var doneView: DoneView = {
-        let view = DoneView()
-        addSubview(view)
-        view.frame = CGRect(x: -view.frame.width, y: 0, width: view.frame.width, height: bounds.size.height)
-        return view
-    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 14)
@@ -32,7 +25,6 @@ class MainCell: UITableViewCell {
         let view = CircularProgressView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), lineWidth: 10, rounded: false)
         view.trackColor = .blueColor
         view.progressColor = .whiteBlue
-
         return view
     }()
     private lazy var countLabel: UILabel = {
@@ -47,12 +39,9 @@ class MainCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
     }
-    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     //MARK: - Setup Views
     private func setupViews() {
         contentView.isUserInteractionEnabled = true
@@ -82,7 +71,12 @@ class MainCell: UITableViewCell {
         countLabel.snp.makeConstraints { make in
             make.center.equalTo(progressView)
         }
-        progressView.progress = 0.6
+    }
+    
+    func configure(model: GoalModel) {
+        titleLabel.text = model.name
+        let progress = Int((model.currentSeries * 100)/model.iterationCount)
+        progressView.progress = Float(progress) * 0.01
+        countLabel.text = "\(model.iterationCount)/\(model.currentSeries)"
     }
 }
-

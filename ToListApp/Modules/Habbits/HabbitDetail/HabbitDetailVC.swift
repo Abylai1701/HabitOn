@@ -43,7 +43,6 @@ final class HabbitDetailVC: UIViewController {
         view.contentMode = .scaleAspectFit
         return view
     }()
-    
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(HabbitDetailFirstCell.self,
@@ -55,10 +54,8 @@ final class HabbitDetailVC: UIViewController {
         table.backgroundColor = .clear
         table.delegate = self
         table.dataSource = self
-        
         return table
     }()
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,10 +164,7 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let section = sections[section]
         
@@ -183,7 +177,6 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
            return nil
         }
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let section = sections[section]
         
@@ -206,5 +199,3 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
         UITableView.automaticDimension
     }
 }
-
-

@@ -92,7 +92,6 @@ final class EditGoalVC: UIViewController {
         
         return button
     }()
-    
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
@@ -109,7 +108,6 @@ final class EditGoalVC: UIViewController {
         view.backgroundColor = .clear
         setupViews()
     }
-    
     //MARK: - Setup Functions
     private func setupViews() -> Void {
         
@@ -125,8 +123,12 @@ final class EditGoalVC: UIViewController {
             make.height.equalTo(380)
         }
         container.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-        container.addSubviews(goalField, notifyButton, n21Button,
-                              repeatLabel, checkBox, collectionView,
+        container.addSubviews(goalField,
+                              notifyButton,
+                              n21Button,
+                              repeatLabel,
+                              checkBox,
+                              collectionView,
                               buttonsStack)
         goalField.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
@@ -170,12 +172,10 @@ final class EditGoalVC: UIViewController {
             make.height.equalTo(45)
             make.width.equalTo(153)
         }
-        
         saveButton.snp.makeConstraints { make in
             make.height.equalTo(45)
             make.width.equalTo(153)
         }
-        
         buttonsStack.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom).offset(48)
             make.left.equalToSuperview().offset(24)
@@ -217,15 +217,10 @@ final class EditGoalVC: UIViewController {
     }
 }
 extension EditGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
-        
         return cell
     }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
-
 }
