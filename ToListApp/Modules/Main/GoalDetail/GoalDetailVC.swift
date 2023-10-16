@@ -16,6 +16,7 @@ final class GoalDetailVC: BaseController {
     
     private let viewModel: GoalDetailViewModelLogic = GoalDetailViewModel()
     private var goalModel: GoalDetailModel?
+    private var history: [History] = []
 
     var closeAction : (()->())?
     var shareAction: (()->())?
@@ -146,7 +147,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         case .first , .second:
             return 1
         case .third:
-            return 10
+            return goalModel?.history?.count ?? 8
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,7 +164,13 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .third:
             let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.cellId, for: indexPath) as! HistoryCell
+            let histories = goalModel?.history?[indexPath.row]
+            cell.configure(model: histories)
+            if let isEmpty = goalModel?.history?.isEmpty, isEmpty {
+                cell.isHidden = true
+            }
             return cell
+            
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
@@ -172,6 +179,9 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         
         switch section {
         case .third:
+            if let isEmpty = goalModel?.history?.isEmpty, isEmpty {
+                return nil
+            }
             return SectionHeaderView(title: "История")
         default:
            return nil

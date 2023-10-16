@@ -22,7 +22,7 @@ class HistoryCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 11)
         label.textColor = .green
-        label.text = "Выполнено"
+        label.text = ""
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -81,6 +81,24 @@ class HistoryCell: UITableViewCell {
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(2)
             make.bottom.equalToSuperview().offset(-1)
+        }
+    }
+    func configure(model: History?) {
+        guard let model = model else {
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.date(from: model.date) {
+            dateFormatter.dateFormat = "d MMMM"
+            let formattedDate = dateFormatter.string(from: date)
+            dateLabel.text = formattedDate
+        }
+        if model.done {
+            doneLabel.text = "Выполнено"
+        }else{
+            doneLabel.text = "Не выполнено"
         }
     }
 }
