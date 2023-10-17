@@ -6,7 +6,7 @@ enum API {
     
  
     static let goals                = "habit"
-//    static let pastTickets          = "v2/ticket/past"
+    static let habits               = "interval"
 //    static let rejectedTickets      = "v2/ticket/rejected"
 //    static let cancellationReasons  = "v2/ticket/cancellation_reasons"
     static func goalDetail

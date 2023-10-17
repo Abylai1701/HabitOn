@@ -53,7 +53,7 @@ class GoalProgressCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 12)
         label.textColor = .white
-        label.text = "12/10"
+        label.text = ""
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -119,8 +119,8 @@ class GoalProgressCell: UITableViewCell {
             return
         }
         titleLabel.text = model.name
-        let progress = Int((model.iterationCount ?? 500))
-        progressView.progress = Float(progress) * 0.04
-        countLabel.text = "\(model.iterationCount ?? 6)"
+        let progress = Int(((model.currentSeries ?? 0) * 100)/(model.iterationCount ?? 0))
+        progressView.progress = Float(progress) * 0.01
+        countLabel.text = "\(model.iterationCount ?? 0)/\(model.currentSeries ?? 0)"
     }
 }

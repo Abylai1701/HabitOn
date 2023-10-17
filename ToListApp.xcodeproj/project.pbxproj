@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		758F366F2ADCCFCE000510CA /* HabbitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F366E2ADCCFCE000510CA /* HabbitsViewModel.swift */; };
+		758F36712ADCD022000510CA /* HabbitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F36702ADCD022000510CA /* HabbitModel.swift */; };
 		75DC9D9B2AD6BEC900324E21 /* HabbitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */; };
 		75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */; };
 		75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */; };
@@ -86,6 +88,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		758F366E2ADCCFCE000510CA /* HabbitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewModel.swift; sourceTree = "<group>"; };
+		758F36702ADCD022000510CA /* HabbitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitModel.swift; sourceTree = "<group>"; };
 		75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewController.swift; sourceTree = "<group>"; };
 		75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCell.swift; sourceTree = "<group>"; };
 		75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRightView.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				75DC9DA92AD7485B00324E21 /* CreateHabbit */,
 				75DC9D9C2AD6BF0300324E21 /* Cells + View */,
 				75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */,
+				758F366E2ADCCFCE000510CA /* HabbitsViewModel.swift */,
+				758F36702ADCD022000510CA /* HabbitModel.swift */,
 			);
 			path = Habbits;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 		75DC9DB92AD98FB600324E21 /* Cells + View */ = {
 			isa = PBXGroup;
 			children = (
+				B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */,
 				75DC9DBA2AD9910000324E21 /* GoalProgressCell.swift */,
 				75DC9DBC2AD999D400324E21 /* GoalWeekCell.swift */,
 				75DC9DBE2AD9EAE600324E21 /* HistoryCell.swift */,
@@ -472,7 +479,6 @@
 			isa = PBXGroup;
 			children = (
 				B2D82BFB2AB67310001DEFB3 /* CreateGoalVC.swift */,
-				B2D82BFF2AB677E3001DEFB3 /* WeekCell.swift */,
 			);
 			path = CreateGoal;
 			sourceTree = "<group>";
@@ -634,7 +640,9 @@
 				75DC9E962ADC534F00324E21 /* Loopable.swift in Sources */,
 				B2D82C002AB677E3001DEFB3 /* WeekCell.swift in Sources */,
 				75DC9EA42ADC61C100324E21 /* NetworkRouter.swift in Sources */,
+				758F36712ADCD022000510CA /* HabbitModel.swift in Sources */,
 				B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */,
+				758F366F2ADCCFCE000510CA /* HabbitsViewModel.swift in Sources */,
 				B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */,
 				B28547352AAC668500EF057C /* AppCenter.swift in Sources */,
 				75DC9DB82AD98E5100324E21 /* GoalDetailVC.swift in Sources */,

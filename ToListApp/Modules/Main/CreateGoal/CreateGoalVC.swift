@@ -4,6 +4,14 @@ import UIKit
 final class CreateGoalVC: UIViewController {
     
     //MARK: - Properties
+    let days: [DayOfWeek] = [.monday,
+                             .tuesday,
+                             .wednesday,
+                             .thursday,
+                             .friday,
+                             .saturday,
+                             .sunday]
+    
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -77,6 +85,7 @@ final class CreateGoalVC: UIViewController {
         collection.dataSource = self
         collection.backgroundColor = .clear
         collection.allowsSelection = true
+        collection.isUserInteractionEnabled = true
         collection.showsHorizontalScrollIndicator = false
         collection.register(WeekCell.self, forCellWithReuseIdentifier: WeekCell.cellId)
         return collection
@@ -197,10 +206,21 @@ final class CreateGoalVC: UIViewController {
     }
 }
 extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { days.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
+        
+//        if selectedTab == indexPath.row {
+//            cell.layer.borderColor = UIColor.white.cgColor
+//        } else {
+//            cell.layer.borderColor = UIColor.blueColor.cgColor
+//        }
+        
         return cell
     }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        selectedTab = indexPath.row
+//        collectionView.reloadData()
+//    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

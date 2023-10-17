@@ -1,38 +1,49 @@
 import UIKit
 
-enum DayOfWeek {
-    case monday
-    case thuesday
-    case wednesday
-    case thursday
-    case friday
-    case saturday
-    case sunday
+enum DayOfWeek: String {
+    case monday = "mn"
+    case tuesday = "tu"
+    case wednesday = "we"
+    case thursday = "th"
+    case friday = "fr"
+    case saturday = "st"
+    case sunday = "su"
+    case null
     
-    var title:String {
+    var title: String {
         switch self {
         case .monday: return "Пн"
-        case .thuesday: return "Вт"
+        case .tuesday: return "Вт"
         case .wednesday: return "Ср"
         case .thursday: return "Чт"
         case .friday: return "Пт"
         case .saturday: return "Сб"
         case .sunday: return "Вс"
+        case .null: return ""
         }
     }
 }
-
+struct WeekDayModel {
+    var isSelected: Bool = false
+    var type: DayOfWeek
+}
+extension DayOfWeek: Codable {
+    public init(from decoder: Decoder) throws {
+        self = try DayOfWeek(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .null
+    }
+}
 class GoalWeekCell: UITableViewCell {
     
     //MARK: - Properties
     private var weekModel: GoalDetailModel? = nil
-    let days: [DayOfWeek] = [.monday,
-                             .thuesday,
+    var days: [DayOfWeek] = [.monday,
+                             .tuesday,
                              .wednesday,
                              .thursday,
                              .friday,
                              .saturday,
                              .sunday]
+    var daysModel: [WeekDayModel] = []
     
     private lazy var container: UIView = {
         let container = UIView()
@@ -58,7 +69,6 @@ class GoalWeekCell: UITableViewCell {
         collection.delegate = self
         collection.dataSource = self
         collection.backgroundColor = .clear
-        collection.allowsSelection = true
         collection.showsHorizontalScrollIndicator = false
         collection.register(WeekCell.self, forCellWithReuseIdentifier: WeekCell.cellId)
         return collection
@@ -123,8 +133,13 @@ class GoalWeekCell: UITableViewCell {
     //MARK: - Setup Views
     private func setupViews() {
         contentView.isUserInteractionEnabled = true
+        isUserInteractionEnabled = true
         selectionStyle = .none
         backgroundColor = .white
+        for day in days {
+            daysModel.append(WeekDayModel(isSelected: false,
+                                          type: day))
+        }
         addSubviews(container,container2)
         
         container.snp.makeConstraints { make in
@@ -189,19 +204,30 @@ class GoalWeekCell: UITableViewCell {
         }
     }
     func configure(model: GoalDetailModel?) {
+        guard let model = model else {return}
         self.weekModel = model
-        self.currentTime.text = "\(model?.currentSeries ?? 667) раз"
-        self.recordTime.text = "\(model?.longestSeries ?? 667) раз подряд"
+        self.currentTime.text = "\(model.currentSeries ?? 667) раз"
+        self.recordTime.text = "\(model.longestSeries ?? 667) раз подряд"
+        for i in 0..<days.count{
+            
+            daysModel[i].isSelected = model.days?.contains(days[i]) ?? false
+        }
         self.collectionView.reloadData()
     }
 }
 extension GoalWeekCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { daysModel.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
-        let days = self.days[indexPath.row]
-        cell.configure(day: days, model: weekModel )
+        
+        cell.configure(day: daysModel[indexPath.row])
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let isSelect = daysModel[indexPath.row].isSelected
+        daysModel[indexPath.row].isSelected = !isSelect
+        collectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

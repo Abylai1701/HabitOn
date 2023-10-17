@@ -63,4 +63,10 @@ class HabbitCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-8)
         }
     }
+    func configure(model: HabbitModel) {
+        titleLabel.text = model.name
+        if model.color == "black" {
+            mainView.backgroundColor = .black
+        }
+    }
 }

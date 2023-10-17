@@ -2,7 +2,7 @@ import Foundation
 
 struct GoalDetailModel: Codable {
     let name: String?
-    let days: [String]?
+    let days: [DayOfWeek]?
     let iterationCount: Int?
     let pushTime: String?
     let done: Bool

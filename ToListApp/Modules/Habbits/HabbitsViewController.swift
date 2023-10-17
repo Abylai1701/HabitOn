@@ -3,6 +3,9 @@ import UIKit
 final class HabbitsViewController: BaseController {
     
     //MARK: - Properties
+    private let viewModel: HabbitsViewModelLogic = HabbitsViewModel()
+    private var habbits: [HabbitModel] = []
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(HabbitCell.self,
@@ -41,8 +44,20 @@ final class HabbitsViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        bind()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchHabbits()
     }
     
+    private func bind(){
+        viewModel.habbits.observe(on: self) { habbits in
+            self.habbits = habbits
+            print(habbits,"Log")
+            self.tableView.reloadData()
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.setNavigationBarHidden(true,
@@ -83,13 +98,13 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
         1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        habbits.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: HabbitCell.cellId,
             for: indexPath) as! HabbitCell
-        
+        cell.configure(model: habbits[indexPath.section])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

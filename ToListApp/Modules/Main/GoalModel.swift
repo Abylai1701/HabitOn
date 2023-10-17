@@ -2,7 +2,7 @@ import Foundation
 
 struct GoalModel: Codable {
     let id: Int
-    let name, pushTime: String
+    let name, pushTime: String?
     let iterationCount: Int
     let days: [String]
     let currentSeries: Int

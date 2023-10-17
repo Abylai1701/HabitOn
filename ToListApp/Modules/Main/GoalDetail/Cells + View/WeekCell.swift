@@ -19,11 +19,7 @@ class WeekCell: UICollectionViewCell {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     //MARK: - Setup Views
     private func setupViews() {
-        layer.borderWidth = 5 // Измените толщину линии по вашему выбору
-        layer.borderColor = UIColor.blueColor.cgColor
-        layer.cornerRadius = 22.5
         contentView.isUserInteractionEnabled = true
-        
         addSubview(label)
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -31,12 +27,17 @@ class WeekCell: UICollectionViewCell {
         }
     }
     
-    func configure(day: DayOfWeek, model: GoalDetailModel?) {
-        label.setTitle(day.title, for: .normal)
-        if let days = model?.days {
-            if days.contains("mn") || days.contains("gy") || days.contains("sg") || days.contains("hs") || days.contains("st") || days.contains("hs") || days.contains("vx") {
-                layer.borderColor = UIColor.white.cgColor
-            }
+    func configure(day: WeekDayModel) {
+        label.setTitle(day.type.title, for: .normal)
+        if day.isSelected {
+            layer.borderWidth = 5 // Измените толщину линии по вашему выбору
+            layer.borderColor = UIColor.white.cgColor
+            layer.cornerRadius = 22.5
+        }
+        else {
+            layer.borderWidth = 5 // Измените толщину линии по вашему выбору
+            layer.borderColor = UIColor.blueColor.cgColor
+            layer.cornerRadius = 22.5
         }
     }
 }
