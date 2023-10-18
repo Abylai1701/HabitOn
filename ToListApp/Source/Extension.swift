@@ -14,7 +14,7 @@ extension String  {
             let bundle = Bundle(path: path)
             return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
         }
-       return NSLocalizedString(self, comment: "")
+        return NSLocalizedString(self, comment: "")
     }
     func localized(_ arguments: String...) -> String {
         return String(format: self.localized, arguments: arguments)
@@ -24,7 +24,7 @@ extension String  {
             let bundle = Bundle(path: path)
             return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
         }
-       return NSLocalizedString(self, comment: "")
+        return NSLocalizedString(self, comment: "")
     }
     var localizedImage: UIImage? {
         let lang = LanguageCenter.standard.getLanguage() ?? .en
@@ -98,12 +98,12 @@ extension UIViewController {
             self.dismiss(animated: true, completion: nil)
             completion()
         }
-
+        
         let cancelAction = UIAlertAction(title: "no".localized, style: .default, handler: nil)
-
+        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
-
+        
         self.present(alertController, animated: true, completion: nil)
     }
 }
@@ -143,4 +143,20 @@ extension UITableViewCell {
         return String(describing: self)
     }
     
+    func convertTimeIntervalString(_ originalString: String) -> String {
+        var components = originalString.components(separatedBy: " ")
+        
+        for (index, component) in components.enumerated() {
+            if component == "days" {
+                components[index] = "д"
+            } else if component == "hours" {
+                components[index] = "ч"
+            } else if component == "minuts" {
+                components[index] = "м"
+            }
+        }
+        
+        let result = components.joined(separator: " ")
+        return result
+    }
 }

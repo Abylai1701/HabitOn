@@ -11,7 +11,8 @@ final class CreateGoalVC: UIViewController {
                              .friday,
                              .saturday,
                              .sunday]
-    
+    var daysModel: [WeekDayModel] = []
+
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -119,6 +120,11 @@ final class CreateGoalVC: UIViewController {
     private func setupViews() -> Void {
         
         view.addSubviews(shadowView, container)
+        
+        for day in days {
+            daysModel.append(WeekDayModel(isSelected: false,
+                                          type: day))
+        }
         shadowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             
@@ -206,21 +212,16 @@ final class CreateGoalVC: UIViewController {
     }
 }
 extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { days.count }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { daysModel.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
-        
-//        if selectedTab == indexPath.row {
-//            cell.layer.borderColor = UIColor.white.cgColor
-//        } else {
-//            cell.layer.borderColor = UIColor.blueColor.cgColor
-//        }
-        
+        cell.configure(day: daysModel[indexPath.row])
         return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedTab = indexPath.row
-//        collectionView.reloadData()
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let isSelect = daysModel[indexPath.row].isSelected
+    daysModel[indexPath.row].isSelected = !isSelect
+    collectionView.reloadData()
+}
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

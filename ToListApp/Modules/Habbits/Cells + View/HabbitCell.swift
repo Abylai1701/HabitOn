@@ -65,8 +65,21 @@ class HabbitCell: UITableViewCell {
     }
     func configure(model: HabbitModel) {
         titleLabel.text = model.name
-        if model.color == "black" {
-            mainView.backgroundColor = .black
+        
+        let time = convertTimeIntervalString(model.currentInterval)
+        timeLabel.text = time
+        
+        let color = model.color
+        
+        switch color {
+        case "scarlet": return mainView.backgroundColor = .scarletColor
+        case "yellow": return mainView.backgroundColor = .yellowColor
+        case "green": return mainView.backgroundColor = .greenColor
+        case "whiteBlue": return mainView.backgroundColor = .whiteBlue2
+        case "blue": return mainView.backgroundColor = .blue
+        case "purple": return mainView.backgroundColor = .purple
+        case "red": return mainView.backgroundColor = .red
+        default: mainView.backgroundColor = .black
         }
     }
 }

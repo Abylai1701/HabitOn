@@ -45,6 +45,10 @@
 		75DC9EAD2ADC61C100324E21 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EA32ADC61C000324E21 /* ParseManager.swift */; };
 		75DC9EAF2ADC85CC00324E21 /* GoalDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EAE2ADC85CC00324E21 /* GoalDetailViewModel.swift */; };
 		75DC9EB12ADC863C00324E21 /* GoalDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9EB02ADC863C00324E21 /* GoalDetailModel.swift */; };
+		75E7F2662ADF35170088B849 /* HabbitDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7F2652ADF35170088B849 /* HabbitDetailModel.swift */; };
+		75E7F2682ADF64240088B849 /* HabbitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7F2672ADF64240088B849 /* HabbitDetailViewModel.swift */; };
+		75E7F26A2AE005730088B849 /* CreateHabbitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7F2692AE005730088B849 /* CreateHabbitViewModel.swift */; };
+		75E7F26C2AE005DF0088B849 /* CreateHabbitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E7F26B2AE005DF0088B849 /* CreateHabbitModel.swift */; };
 		B225C3B92AAC6AC700CFBEE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B225C3BB2AAC6AC700CFBEE5 /* Localizable.strings */; };
 		B225C3BE2AAC6B5100CFBEE5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3BD2AAC6B5100CFBEE5 /* Extension.swift */; };
 		B225C3C22AAEA9E500CFBEE5 /* LanguageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C3C12AAEA9E500CFBEE5 /* LanguageCenter.swift */; };
@@ -126,6 +130,10 @@
 		75DC9EA32ADC61C000324E21 /* ParseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		75DC9EAE2ADC85CC00324E21 /* GoalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewModel.swift; sourceTree = "<group>"; };
 		75DC9EB02ADC863C00324E21 /* GoalDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailModel.swift; sourceTree = "<group>"; };
+		75E7F2652ADF35170088B849 /* HabbitDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitDetailModel.swift; sourceTree = "<group>"; };
+		75E7F2672ADF64240088B849 /* HabbitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitDetailViewModel.swift; sourceTree = "<group>"; };
+		75E7F2692AE005730088B849 /* CreateHabbitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabbitViewModel.swift; sourceTree = "<group>"; };
+		75E7F26B2AE005DF0088B849 /* CreateHabbitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabbitModel.swift; sourceTree = "<group>"; };
 		8DEAE7E4C5FF52F9EB201112 /* Pods-ToListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToListApp.debug.xcconfig"; path = "Target Support Files/Pods-ToListApp/Pods-ToListApp.debug.xcconfig"; sourceTree = "<group>"; };
 		98739E31E773C25F9E0403CD /* Pods_ToListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B225C3B52AAC6A8B00CFBEE5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -240,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				75DC9DAA2AD7487700324E21 /* CreateHabbitViewController.swift */,
+				75E7F2692AE005730088B849 /* CreateHabbitViewModel.swift */,
+				75E7F26B2AE005DF0088B849 /* CreateHabbitModel.swift */,
 				75DC9DAC2AD74A0300324E21 /* ColourCell.swift */,
 			);
 			path = CreateHabbit;
@@ -249,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				75DC9DAF2AD7503B00324E21 /* HabbitDetailVC.swift */,
+				75E7F2652ADF35170088B849 /* HabbitDetailModel.swift */,
+				75E7F2672ADF64240088B849 /* HabbitDetailViewModel.swift */,
 				75DC9DB12AD759D800324E21 /* Cells */,
 			);
 			path = HabbitDetail;
@@ -622,6 +634,7 @@
 				75DC9DEC2ADC462600324E21 /* MainViewModel.swift in Sources */,
 				75DC9EAD2ADC61C100324E21 /* ParseManager.swift in Sources */,
 				75DC9EAF2ADC85CC00324E21 /* GoalDetailViewModel.swift in Sources */,
+				75E7F26C2AE005DF0088B849 /* CreateHabbitModel.swift in Sources */,
 				75DC9EAA2ADC61C100324E21 /* Parser.swift in Sources */,
 				B225C3C72AAEAC2900CFBEE5 /* MainController.swift in Sources */,
 				B225C3CF2AAEACA000CFBEE5 /* LoaderView.swift in Sources */,
@@ -629,6 +642,7 @@
 				75DC9EA82ADC61C100324E21 /* Response.swift in Sources */,
 				75DC9EA72ADC61C100324E21 /* NetworkManager.swift in Sources */,
 				B225C3E32AAEAEDD00CFBEE5 /* MainCell.swift in Sources */,
+				75E7F2662ADF35170088B849 /* HabbitDetailModel.swift in Sources */,
 				75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */,
 				B225C3CB2AAEAC4D00CFBEE5 /* BaseController.swift in Sources */,
 				75DC9D9B2AD6BEC900324E21 /* HabbitsViewController.swift in Sources */,
@@ -647,6 +661,7 @@
 				B28547352AAC668500EF057C /* AppCenter.swift in Sources */,
 				75DC9DB82AD98E5100324E21 /* GoalDetailVC.swift in Sources */,
 				75DC9EA92ADC61C100324E21 /* Observable.swift in Sources */,
+				75E7F26A2AE005730088B849 /* CreateHabbitViewModel.swift in Sources */,
 				B225C3C42AAEAACC00CFBEE5 /* Colors.swift in Sources */,
 				75DC9DCA2ADC424C00324E21 /* UserManager.swift in Sources */,
 				75DC9DA32AD6D57A00324E21 /* SettingsViewController.swift in Sources */,
@@ -673,6 +688,7 @@
 				75DC9EA62ADC61C100324E21 /* Result.swift in Sources */,
 				B2D82BFE2AB6773A001DEFB3 /* CheckBox.swift in Sources */,
 				75DC9EB12ADC863C00324E21 /* GoalDetailModel.swift in Sources */,
+				75E7F2682ADF64240088B849 /* HabbitDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@ class ColourCell: UICollectionViewCell {
     
     private let borderLayer = CALayer()
     
-    private lazy var colour: UIButton = {
+    private lazy var color: UIButton = {
         let button = UIButton()
         
         button.backgroundColor = .greenColor
@@ -24,20 +24,38 @@ class ColourCell: UICollectionViewCell {
     
     //MARK: - Setup Views
     private func setupViews() {
-        layer.borderWidth = 5
-        layer.borderColor = UIColor.white.cgColor
-        layer.cornerRadius = 22.5
+        color.isUserInteractionEnabled = false
+        
         contentView.isUserInteractionEnabled = true
-
-        addSubview(colour)
-        colour.snp.makeConstraints { make in
+        
+        addSubview(color)
+        color.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.width.equalTo(45)
         }
     }
-    
-    
-    
     //MARK: - Actions
-    
+    func configure(color: ColorsType, isSelected: Bool) {
+        self.color.backgroundColor = color.color
+        
+        if isSelected {
+            layer.borderWidth = 5
+            layer.borderColor = UIColor.white.cgColor
+        } else {
+            layer.borderWidth = 0
+            layer.borderColor = nil
+        }
+        layer.cornerRadius = 22.5
+    }
+    func configureDetail(color: ColorModel) {
+        self.color.backgroundColor = color.type.color
+        if color.isSelected {
+            layer.borderWidth = 5
+            layer.borderColor = UIColor.white.cgColor
+        }else {
+            layer.borderWidth = 0
+            layer.borderColor = nil
+        }
+        layer.cornerRadius = 22.5
+    }
 }

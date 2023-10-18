@@ -14,6 +14,10 @@ final class HabbitDetailVC: UIViewController {
                                              .second,
                                              .third]
     
+    private let viewModel: HabbitDetailViewModelLogic = HabbitDetailViewModel()
+    private var habbitModel: HabbitDetailModel?
+    private var id: Int
+
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -32,6 +36,7 @@ final class HabbitDetailVC: UIViewController {
         return container
     }()
     private lazy var closeButton: UIImageView = {
+        view.isUserInteractionEnabled = true
         let view = UIImageView()
         view.image = UIImage(named: "exit_icon")
         view.contentMode = .scaleAspectFit
@@ -39,8 +44,11 @@ final class HabbitDetailVC: UIViewController {
     }()
     private lazy var deleteButton: UIImageView = {
         let view = UIImageView()
+        view.isUserInteractionEnabled = true
         view.image = UIImage(named: "delete_icon")
         view.contentMode = .scaleAspectFit
+        let target = UITapGestureRecognizer(target: self, action: #selector(tapDelete))
+        view.addGestureRecognizer(target)
         return view
     }()
     private lazy var tableView: UITableView = {
@@ -56,17 +64,37 @@ final class HabbitDetailVC: UIViewController {
         table.dataSource = self
         return table
     }()
+    // MARK: - Init
+    init(id: Int) {
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         setupViews()
+        bind()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchHabbitDetail(id: self.id)
+    }
+    func bind() {
+        viewModel.habbitDetail.observe(on: self) { habbit in
+            self.habbitModel = habbit
+            self.tableView.reloadData()
+        }
+    }
     //MARK: - Setup Functions
     private func setupViews() -> Void {
         
         view.addSubviews(shadowView, container)
+        container.isUserInteractionEnabled = true
         shadowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -99,7 +127,6 @@ final class HabbitDetailVC: UIViewController {
     // MARK: - Actions
     @objc func tapShadow() -> Void {
         tapClose()
-        closeAction?()
     }
     @objc func tapClose() -> Void {
         dismiss(animated: true, completion: nil)
@@ -108,6 +135,10 @@ final class HabbitDetailVC: UIViewController {
     @objc func tapShare() {
         tapClose()
         shareAction?()
+    }
+    @objc func tapDelete() {
+        viewModel.removeHabbit(id: self.id)
+        tapClose()
     }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
@@ -142,7 +173,7 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
         case .first , .second:
             return 1
         case .third:
-            return 5
+            return habbitModel?.periods?.count ?? 8
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -151,16 +182,21 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .first:
             let cell = tableView.dequeueReusableCell(withIdentifier: HabbitDetailFirstCell.cellId, for: indexPath) as! HabbitDetailFirstCell
+            cell.configure(model: habbitModel)
             return cell
         case .second:
             let cell = tableView.dequeueReusableCell(withIdentifier: HabbitDetailSecondCell.cellId, for: indexPath) as! HabbitDetailSecondCell
+            cell.configure(model: habbitModel)
             return cell
         case .third:
             let cell = tableView.dequeueReusableCell(withIdentifier: HabbitDetailThirdCell.cellId, for: indexPath) as! HabbitDetailThirdCell
-            return cell
-        default:
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
+            
+            let histories = habbitModel?.periods?[indexPath.row]
+            cell.configure(model: histories)
+
+            if let isEmpty = habbitModel?.periods?.isEmpty, isEmpty {
+                cell.isHidden = true
+            }
             return cell
         }
     }

@@ -3,6 +3,8 @@ import UIKit
 class HabbitDetailSecondCell: UITableViewCell {
     
     //MARK: - Properties
+    private var habbitModel: HabbitDetailModel? = nil
+
     private lazy var container: UIView = {
         let container = UIView()
         container.backgroundColor = .blueColor2
@@ -102,13 +104,17 @@ class HabbitDetailSecondCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-14)
         }
     }
-    
     //MARK: - Configure
-//    func configure(model: [EventModel]) {
-//        self.events = model
-//        collectionView.snp.updateConstraints { make in
-//            make.height.equalTo(model.count>0 ? 200 : 0)
-//        }
-//        self.collectionView.reloadData()
-//    }
+    func configure(model: HabbitDetailModel?) {
+        guard let model = model else {return}
+        self.habbitModel = model
+        let originalString = model.currentPeriod
+        let currentTime = convertTimeIntervalString(originalString)
+        
+        let maxTime = model.currentPeriod
+        let maxRecord = convertTimeIntervalString(maxTime)
+        
+        self.currentTime.text = currentTime
+        self.recordTime.text = maxRecord
+    }
 }

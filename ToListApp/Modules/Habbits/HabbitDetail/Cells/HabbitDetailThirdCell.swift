@@ -14,7 +14,7 @@ class HabbitDetailThirdCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 11)
         label.textColor = .white
-        label.text = "2 октября"
+        label.text = ""
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -74,5 +74,58 @@ class HabbitDetailThirdCell: UITableViewCell {
             make.height.equalTo(2)
             make.bottom.equalToSuperview().offset(-1)
         }
+    }
+    func formatDateString(_ dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM"
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "dd MMMM"
+            let formattedDate = dateFormatter.string(from: date)
+            return formattedDate
+        }
+        return ""
+    }
+
+    func calculateEndDate(startDate: String, interval: String) -> String {
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMMM"
+        if let startDate = dateFormatter.date(from: startDate) {
+            var components = DateComponents()
+            
+            // Разбираем интервал на компоненты (дни, часы, минуты)
+            let intervalComponents = interval.components(separatedBy: " ")
+            if intervalComponents.count == 6 {
+                if let days = Int(intervalComponents[0]) {
+                    components.day = days
+                }
+                if let hours = Int(intervalComponents[3]) {
+                    components.hour = hours
+                }
+                if let minutes = Int(intervalComponents[5]) {
+                    components.minute = minutes
+                }
+                
+                // Вычисляем дату окончания
+                if let endDate = calendar.date(byAdding: components, to: startDate) {
+                    let formattedStartDate = formatDateString(dateFormatter.string(from: startDate))
+                    let formattedEndDate = formatDateString(dateFormatter.string(from: endDate))
+                    return "\(formattedStartDate) - \(formattedEndDate)"
+                }
+            }
+        }
+        
+        return ""
+    }
+    
+    func configure(model: Period?) {
+        guard let model = model else {
+            return
+        }
+        let startDate = model.start
+        let interval = model.interval
+        let endDateString = calculateEndDate(startDate: startDate, interval: interval)
+        dateLabel.text = endDateString
+        doneLabel.text = convertTimeIntervalString(interval)
     }
 }

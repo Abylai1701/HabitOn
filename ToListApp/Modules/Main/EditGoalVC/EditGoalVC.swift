@@ -4,6 +4,16 @@ import UIKit
 final class EditGoalVC: UIViewController {
     
     //MARK: - Properties
+    private var id: Int
+    let days: [DayOfWeek] = [.monday,
+                             .tuesday,
+                             .wednesday,
+                             .thursday,
+                             .friday,
+                             .saturday,
+                             .sunday]
+    var daysModel: [WeekDayModel] = []
+    
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -102,6 +112,15 @@ final class EditGoalVC: UIViewController {
         
         return button
     }()
+    // MARK: - Init
+    init(id: Int) {
+        self.id = id
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +131,10 @@ final class EditGoalVC: UIViewController {
     private func setupViews() -> Void {
         
         view.addSubviews(shadowView, container)
+        for day in days {
+            daysModel.append(WeekDayModel(isSelected: false,
+                                          type: day))
+        }
         shadowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             
@@ -217,10 +240,16 @@ final class EditGoalVC: UIViewController {
     }
 }
 extension EditGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { daysModel.count }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.cellId, for: indexPath) as! WeekCell
+        cell.configure(day: daysModel[indexPath.row])
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let isSelect = daysModel[indexPath.row].isSelected
+    daysModel[indexPath.row].isSelected = !isSelect
+    collectionView.reloadData()
+}
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

@@ -4,6 +4,7 @@ final class HabbitsViewController: BaseController {
     
     //MARK: - Properties
     private let viewModel: HabbitsViewModelLogic = HabbitsViewModel()
+    
     private var habbits: [HabbitModel] = []
     
     private lazy var tableView: UITableView = {
@@ -88,6 +89,10 @@ final class HabbitsViewController: BaseController {
         let vc = CreateHabbitViewController()
         vc.modalPresentationStyle = .overCurrentContext
         Router.shared.show(vc)
+        vc.closeAction = { [weak self]  in
+            guard let self = self else {return}
+            self.viewModel.fetchHabbits()
+        }
     }
 }
 
@@ -116,12 +121,18 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
         return footerView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = HabbitDetailVC()
+        let vc = HabbitDetailVC(id: habbits[indexPath.section].id)
         vc.modalPresentationStyle = .overCurrentContext
         Router.shared.show(vc)
+        vc.closeAction = { [weak self]  in
+            guard let self = self else {return}
+            self.viewModel.fetchHabbits()
+        }
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
+            self.viewModel.rebootHabbit(id: self.habbits[indexPath.section].id)
+            self.viewModel.fetchHabbits()
             completionHandler(true)
         }
         leftAction.backgroundColor = .yellowColor

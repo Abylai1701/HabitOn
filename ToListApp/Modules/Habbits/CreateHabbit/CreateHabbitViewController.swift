@@ -1,9 +1,52 @@
 import Foundation
 import UIKit
 
+enum ColorsType: String {
+    case scarlet = "scarlet"
+    case yellow = "yellow"
+    case green = "green"
+    case whiteBlue = "whiteBlue"
+    case blue = "blue"
+    case phiolet = "purple"
+    case red = "red"
+    case null
+    
+    var color: UIColor {
+        switch self {
+        case .scarlet: return .scarletColor
+        case .yellow: return .yellowColor2
+        case .green: return .greenColor
+        case .whiteBlue: return .whiteBlue2
+        case .blue: return .blue
+        case .phiolet: return .purple
+        case .red: return .red
+        case .null: return .white
+        }
+    }
+}
+
+extension ColorsType: Codable {
+    public init(from decoder: Decoder) throws {
+        self = try ColorsType(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .null
+    }
+}
+
 final class CreateHabbitViewController: UIViewController {
     
     //MARK: - Properties
+    let viewModel: CreateHabbitViewModelLogic = CreateHabbitViewModel()
+
+    let colors: [ColorsType] = [.scarlet,
+                                .yellow,
+                                .green,
+                                .whiteBlue,
+                                .blue,
+                                .phiolet,
+                                .red]
+    
+    var selectedColorIndex: Int?
+    var selectedColor: String? // Добавьте это свойство
+
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -66,6 +109,7 @@ final class CreateHabbitViewController: UIViewController {
                     bottom: 0,
                     right: 24
                 )
+        button.addTarget(self, action: #selector(tapCreate), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -79,6 +123,7 @@ final class CreateHabbitViewController: UIViewController {
     private func setupViews() -> Void {
         
         view.addSubviews(shadowView, container)
+        
         shadowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             
@@ -125,6 +170,15 @@ final class CreateHabbitViewController: UIViewController {
         tapClose()
         shareAction?()
     }
+    @objc
+    func tapCreate() -> Void {
+        guard let name = habbitField.text,
+              let color = selectedColor else {
+            return
+        }
+        viewModel.createHabbit(name: name, color: color)
+        tapShadow()
+    }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
             case .changed:
@@ -148,14 +202,17 @@ final class CreateHabbitViewController: UIViewController {
 }
 extension CreateHabbitViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 7 }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { colors.count }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColourCell.cellId, for: indexPath) as! ColourCell
-        
+        cell.configure(color: colors[indexPath.row], isSelected: indexPath.row == selectedColorIndex)
         return cell
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedColorIndex = indexPath.row
+        selectedColor = colors[selectedColorIndex ?? 0].rawValue // Сохраните выбранный цвет
+        collectionView.reloadData()
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
-
 }

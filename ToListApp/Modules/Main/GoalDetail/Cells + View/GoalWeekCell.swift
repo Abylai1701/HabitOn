@@ -209,7 +209,6 @@ class GoalWeekCell: UITableViewCell {
         self.currentTime.text = "\(model.currentSeries ?? 667) раз"
         self.recordTime.text = "\(model.longestSeries ?? 667) раз подряд"
         for i in 0..<days.count{
-            
             daysModel[i].isSelected = model.days?.contains(days[i]) ?? false
         }
         self.collectionView.reloadData()
@@ -223,11 +222,5 @@ extension GoalWeekCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.configure(day: daysModel[indexPath.row])
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let isSelect = daysModel[indexPath.row].isSelected
-        daysModel[indexPath.row].isSelected = !isSelect
-        collectionView.reloadData()
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

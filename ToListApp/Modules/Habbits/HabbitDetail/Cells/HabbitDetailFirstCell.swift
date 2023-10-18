@@ -1,8 +1,23 @@
 import UIKit
-
+struct ColorModel {
+    var isSelected: Bool = false
+    var type: ColorsType
+}
 class HabbitDetailFirstCell: UITableViewCell {
     
     //MARK: - Properties
+    private var habbitModel: HabbitDetailModel? = nil
+    var colorsModel: [ColorModel] = []
+
+    let colors: [ColorsType] = [.scarlet,
+                                .yellow,
+                                .green,
+                                .whiteBlue,
+                                .blue,
+                                .phiolet,
+                                .red]
+    
+    
     private lazy var rebootButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .scarletColor
@@ -58,7 +73,10 @@ class HabbitDetailFirstCell: UITableViewCell {
         addSubviews(rebootButton,
                     habbitField,
                     collectionView)
-        
+        for color in colors {
+            colorsModel.append(ColorModel(isSelected: false,
+                                          type: color))
+        }
         rebootButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -81,13 +99,16 @@ class HabbitDetailFirstCell: UITableViewCell {
     }
     
     //MARK: - Configure
-//    func configure(model: [EventModel]) {
-//        self.events = model
-//        collectionView.snp.updateConstraints { make in
-//            make.height.equalTo(model.count>0 ? 200 : 0)
-//        }
-//        self.collectionView.reloadData()
-//    }
+    func configure(model: HabbitDetailModel?) {
+        guard let model = model else { return }
+        self.habbitModel = model
+        for i in 0..<colors.count {
+            // Проверяем, есть ли у модели цвет, и присваиваем его или значение по умолчанию
+            let isSelected = model.color == colors[i]
+            colorsModel[i].isSelected = isSelected
+        }
+        self.collectionView.reloadData()
+    }
 }
 
 extension HabbitDetailFirstCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -96,7 +117,8 @@ extension HabbitDetailFirstCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColourCell.cellId, for: indexPath) as! ColourCell
-        
+        cell.configureDetail(color: colorsModel[indexPath.row])
+
         return cell
     }
 

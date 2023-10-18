@@ -16,7 +16,6 @@ final class GoalDetailVC: BaseController {
     
     private let viewModel: GoalDetailViewModelLogic = GoalDetailViewModel()
     private var goalModel: GoalDetailModel?
-    private var history: [History] = []
 
     var closeAction : (()->())?
     var shareAction: (()->())?
@@ -130,7 +129,7 @@ final class GoalDetailVC: BaseController {
         shareAction?()
     }
     @objc func editButtonTapped() {
-        let vc = EditGoalVC()
+        let vc = EditGoalVC(id: self.id)
         vc.modalPresentationStyle = .overCurrentContext
         Router.shared.show(vc)
     }

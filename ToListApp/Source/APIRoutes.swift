@@ -11,6 +11,12 @@ enum API {
 //    static let cancellationReasons  = "v2/ticket/cancellation_reasons"
     static func goalDetail
     (id: Int) -> String {             "habit/\(id)" }
+    static func removeHabbit
+    (id: Int) -> String {             "interval/\(id)" }
+    static func rebootHabbit
+    (id: Int) -> String {             "interval/\(id)/restart" }
+    static func habbitDetail
+    (id: Int) -> String {             "interval/\(id)" }
 //    static func ticketReject
 //    (id: Int) -> String {             "v2/ticket/\(id)/reject" }
 //    static let checkTicket          = "v2/ticket/check"
