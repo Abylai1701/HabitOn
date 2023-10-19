@@ -3,11 +3,14 @@ import UIKit
 class GoalProgressCell: UITableViewCell {
     
     //MARK: - Properties
+    var doneAction: (()->())?
     private lazy var containerDone: UIView = {
         let container = UIView()
         container.backgroundColor = .blueColor
         container.clipsToBounds = true
         container.layer.cornerRadius = 15
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(_:)))
+        container.addGestureRecognizer(tapGesture)
         return container
     }()
     private lazy var doneLabel: UILabel = {
@@ -122,5 +125,8 @@ class GoalProgressCell: UITableViewCell {
         let progress = Int(((model.currentSeries ?? 0) * 100)/(model.iterationCount ?? 0))
         progressView.progress = Float(progress) * 0.01
         countLabel.text = "\(model.iterationCount ?? 0)/\(model.currentSeries ?? 0)"
+    }
+    @objc func viewTapped(_ sender: UITapGestureRecognizer) {
+        doneAction?()
     }
 }

@@ -7,12 +7,16 @@ enum API {
  
     static let goals                = "habit"
     static let habits               = "interval"
+    static let goalDone               = "goal_progress"
+
 //    static let rejectedTickets      = "v2/ticket/rejected"
 //    static let cancellationReasons  = "v2/ticket/cancellation_reasons"
     static func goalDetail
     (id: Int) -> String {             "habit/\(id)" }
     static func removeHabbit
     (id: Int) -> String {             "interval/\(id)" }
+    static func removeGoal
+    (id: Int) -> String {             "habit/\(id)" }
     static func rebootHabbit
     (id: Int) -> String {             "interval/\(id)/restart" }
     static func habbitDetail

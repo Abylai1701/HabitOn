@@ -109,6 +109,14 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = GoalDetailVC(id: goals[indexPath.section].id)
+        vc.doneAction = {[weak self] in
+            guard let self = self else {return}
+            self.viewModel.doneGoal(id: self.goals[indexPath.section].id)
+        }
+        vc.deleteAction = {[weak self] in
+            guard let self = self else {return}
+            self.viewModel.removeGoal(id: self.goals[indexPath.section].id)
+        }
         Router.shared.push(vc)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? { nil }
@@ -119,7 +127,10 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // Создайте действие для свайпа влево
         let leftAction = UIContextualAction(style: .normal, title: "Готово") { (action, view, completionHandler) in
-            // Здесь можно выполнять действия, связанные с левым свайпом
+            self.viewModel.doneGoal(id: self.goals[indexPath.section].id)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.viewModel.fetchGoals()
+            }
             completionHandler(true)
         }
         leftAction.backgroundColor = .greenColor // Установите цвет для действия

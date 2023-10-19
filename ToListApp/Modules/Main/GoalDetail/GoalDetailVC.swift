@@ -17,8 +17,9 @@ final class GoalDetailVC: BaseController {
     private let viewModel: GoalDetailViewModelLogic = GoalDetailViewModel()
     private var goalModel: GoalDetailModel?
     
-    var closeAction : (()->())?
-    var shareAction: (()->())?
+    var doneAction: (()->())?
+    var deleteAction: (()->())?
+
     private var id: Int
     
     private lazy var closeButton: UIButton = {
@@ -36,13 +37,16 @@ final class GoalDetailVC: BaseController {
         view.image = UIImage(named: "edit_icon")
         view.contentMode = .scaleAspectFit
         view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editButtonTapped)))
+        view.isHidden = true
         return view
     }()
     private lazy var deleteButton: UIImageView = {
         let view = UIImageView()
+        view.isUserInteractionEnabled = true
         view.image = UIImage(named: "delete_icon")
         view.contentMode = .scaleAspectFit
+        let target = UITapGestureRecognizer(target: self, action: #selector(tapDelete))
+        view.addGestureRecognizer(target)
         return view
     }()
     private lazy var tableView: UITableView = {
@@ -115,23 +119,11 @@ final class GoalDetailVC: BaseController {
             make.left.right.bottom.equalToSuperview()
         }
     }
-    // MARK: - Actions
-    @objc func tapShadow() -> Void {
-        tapClose()
-        closeAction?()
-    }
-    @objc func tapClose() -> Void {
-        dismiss(animated: true, completion: nil)
-        closeAction?()
-    }
-    @objc func tapShare() {
-        tapClose()
-        shareAction?()
-    }
-    @objc func editButtonTapped() {
-        let vc = EditGoalVC(id: self.id)
-        vc.modalPresentationStyle = .overCurrentContext
-        Router.shared.show(vc)
+    @objc func tapDelete() {
+        deleteAction?()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.tapBack()
+        }
     }
 }
 //MARK: - TableView Delegate
@@ -156,6 +148,9 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         case .first:
             let cell = tableView.dequeueReusableCell(withIdentifier: GoalProgressCell.cellId, for: indexPath) as! GoalProgressCell
             cell.configure(model: goalModel)
+            cell.doneAction = {[weak self] in
+                self?.doneAction?()
+            }
             return cell
         case .second:
             let cell = tableView.dequeueReusableCell(withIdentifier: GoalWeekCell.cellId, for: indexPath) as! GoalWeekCell
