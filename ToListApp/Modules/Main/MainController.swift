@@ -47,7 +47,6 @@ final class MainController: BaseController {
         super.viewWillAppear(animated)
         viewModel.fetchGoals()
     }
-    
     private func bind(){
         viewModel.goals.observe(on: self) { goals in
             self.goals = goals
@@ -125,7 +124,6 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
         UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // Создайте действие для свайпа влево
         let leftAction = UIContextualAction(style: .normal, title: "Готово") { (action, view, completionHandler) in
             self.viewModel.doneGoal(id: self.goals[indexPath.section].id)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -133,9 +131,7 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
             }
             completionHandler(true)
         }
-        leftAction.backgroundColor = .greenColor // Установите цвет для действия
-        
-        // Создайте конфигурацию для левого свайпа
+        leftAction.backgroundColor = .greenColor
         let leadingSwipeConfiguration = UISwipeActionsConfiguration(actions: [leftAction])
         
         return leadingSwipeConfiguration

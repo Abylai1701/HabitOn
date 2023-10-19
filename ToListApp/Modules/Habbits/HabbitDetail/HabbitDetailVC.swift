@@ -20,7 +20,6 @@ final class HabbitDetailVC: UIViewController {
     
     var closeAction : (()->())?
     var rebootAction : (()->())?
-    var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
     
     private lazy var shadowView: UIButton = {

@@ -29,7 +29,6 @@ final class GoalDetailVC: BaseController {
         button.addTarget(self,
                          action: #selector(tapBack),
                          for: .touchUpInside)
-        
         return button
     }()
     private lazy var editButton: UIImageView = {
@@ -61,7 +60,6 @@ final class GoalDetailVC: BaseController {
         table.separatorStyle = .none
         table.delegate = self
         table.dataSource = self
-        
         return table
     }()
     // MARK: - Init
@@ -138,7 +136,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
         case .first , .second:
             return 1
         case .third:
-            return goalModel?.history?.count ?? 8
+            return goalModel?.history?.count ?? 0
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,6 +147,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: GoalProgressCell.cellId, for: indexPath) as! GoalProgressCell
             cell.configure(model: goalModel)
             cell.doneAction = {[weak self] in
+                guard let self = self else {return}
                 self?.doneAction?()
             }
             return cell
@@ -164,7 +163,6 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
                 cell.isHidden = true
             }
             return cell
-            
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}

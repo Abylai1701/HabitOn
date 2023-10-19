@@ -51,7 +51,6 @@ final class HabbitsViewController: BaseController {
         super.viewWillAppear(animated)
         viewModel.fetchHabbits()
     }
-    
     private func bind(){
         viewModel.habbits.observe(on: self) { habbits in
             self.habbits = habbits
