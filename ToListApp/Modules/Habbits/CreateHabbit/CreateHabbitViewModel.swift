@@ -16,7 +16,6 @@ final class CreateHabbitViewModel: CreateHabbitViewModelLogic {
         let parameters: Parameters = ["name": name,
                                       "color": color]
         
-        Router.shared.showLoader()
         ParseManager.shared.postRequest(
             url: API.habits,
             parameters: parameters) {

@@ -16,7 +16,7 @@ class MainCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 12)
         label.textColor = .blueText
-        label.text = "Reminder: Friday at 15:00"
+        label.text = "Reminder: 15:00"
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label

@@ -15,7 +15,6 @@ final class HabbitDetailViewModel: HabbitDetailViewModelLogic {
     //MARK: - Functions
     
     internal func fetchHabbitDetail(id: Int) {
-        Router.shared.showLoader()
         ParseManager.shared.getRequest(
             url: API.habbitDetail(id: id),
             parameters: [:]) {
@@ -27,7 +26,6 @@ final class HabbitDetailViewModel: HabbitDetailViewModelLogic {
             }
     }
     internal func removeHabbit(id: Int) {
-        Router.shared.showLoader()
         ParseManager.shared.deleteRequest(
             url: API.removeHabbit(id: id),
             parameters: [:]) {

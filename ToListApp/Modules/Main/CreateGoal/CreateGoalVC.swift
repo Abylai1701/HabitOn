@@ -4,6 +4,8 @@ import UIKit
 final class CreateGoalVC: UIViewController {
     
     //MARK: - Properties
+    let viewModel: CreateGoalViewModelLogic = CreateGoalViewModel()
+    var selectedDays: [String] = []
     let days: [DayOfWeek] = [.monday,
                              .tuesday,
                              .wednesday,
@@ -110,6 +112,7 @@ final class CreateGoalVC: UIViewController {
             bottom: 0,
             right: 24
         )
+        button.addTarget(self, action: #selector(tapCreate), for: .touchUpInside)
         return button
     }()
     // MARK: - Lifecycle
@@ -181,8 +184,7 @@ final class CreateGoalVC: UIViewController {
     }
     // MARK: - Actions
     @objc func tapShadow() -> Void {
-        tapClose()
-        closeAction?()
+        dismiss(animated: true, completion: nil)
     }
     @objc func tapClose() -> Void {
         dismiss(animated: true, completion: nil)
@@ -190,8 +192,15 @@ final class CreateGoalVC: UIViewController {
     }
     @objc func tapShare() {
         tapClose()
-        shareAction?()
     }
+    @objc
+    func tapCreate() {
+        guard let name = n21Button.text, !selectedDays.isEmpty else {return}
+
+        viewModel.createGoal(name: goalField.text ?? "Goal", iteration_count: Int(name) ?? 21, days: selectedDays)
+        tapClose()
+    }
+
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .changed:
@@ -221,9 +230,19 @@ extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let isSelect = daysModel[indexPath.row].isSelected
-        daysModel[indexPath.row].isSelected = !isSelect
-        collectionView.reloadData()
+        let day = daysModel[indexPath.row].type
+
+        if let index = selectedDays.firstIndex(of: day.rawValue) {
+            // Если день уже выбран, удаляем его из массива
+            selectedDays.remove(at: index)
+        } else {
+            // Если день не выбран, добавляем его в массив
+            selectedDays.append(day.rawValue)
+        }
+
+        daysModel[indexPath.row].isSelected = !daysModel[indexPath.row].isSelected
+        collectionView.reloadItems(at: [indexPath])
     }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

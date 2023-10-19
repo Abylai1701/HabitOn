@@ -89,7 +89,9 @@ final class HabbitsViewController: BaseController {
         Router.shared.show(vc)
         vc.closeAction = { [weak self]  in
             guard let self = self else {return}
-            self.viewModel.fetchHabbits()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.viewModel.fetchHabbits()
+            }
         }
     }
 }
@@ -121,7 +123,9 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
         vc.modalPresentationStyle = .overCurrentContext
         vc.closeAction = { [weak self]  in
             guard let self = self else {return}
-            self.viewModel.fetchHabbits()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.viewModel.fetchHabbits()
+            }
         }
         vc.rebootAction = { [weak self]  in
             guard let self = self else {return}
@@ -132,7 +136,9 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
             self.viewModel.rebootHabbit(id: self.habbits[indexPath.section].id)
-            self.viewModel.fetchHabbits()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.viewModel.fetchHabbits()
+            }
             completionHandler(true)
         }
         leftAction.backgroundColor = .yellowColor

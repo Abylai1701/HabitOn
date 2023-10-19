@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		758F366F2ADCCFCE000510CA /* HabbitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F366E2ADCCFCE000510CA /* HabbitsViewModel.swift */; };
 		758F36712ADCD022000510CA /* HabbitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F36702ADCD022000510CA /* HabbitModel.swift */; };
+		75AB32982AE1C832001445C6 /* CreateGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB32972AE1C832001445C6 /* CreateGoalViewModel.swift */; };
+		75AB329A2AE1C876001445C6 /* CreateGoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB32992AE1C876001445C6 /* CreateGoalModel.swift */; };
 		75DC9D9B2AD6BEC900324E21 /* HabbitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */; };
 		75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */; };
 		75DC9DA02AD6C7F400324E21 /* RoundedRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */; };
@@ -94,6 +96,8 @@
 /* Begin PBXFileReference section */
 		758F366E2ADCCFCE000510CA /* HabbitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewModel.swift; sourceTree = "<group>"; };
 		758F36702ADCD022000510CA /* HabbitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitModel.swift; sourceTree = "<group>"; };
+		75AB32972AE1C832001445C6 /* CreateGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalViewModel.swift; sourceTree = "<group>"; };
+		75AB32992AE1C876001445C6 /* CreateGoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalModel.swift; sourceTree = "<group>"; };
 		75DC9D9A2AD6BEC900324E21 /* HabbitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitsViewController.swift; sourceTree = "<group>"; };
 		75DC9D9D2AD6BF1A00324E21 /* HabbitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitCell.swift; sourceTree = "<group>"; };
 		75DC9D9F2AD6C7F400324E21 /* RoundedRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRightView.swift; sourceTree = "<group>"; };
@@ -491,6 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				B2D82BFB2AB67310001DEFB3 /* CreateGoalVC.swift */,
+				75AB32972AE1C832001445C6 /* CreateGoalViewModel.swift */,
+				75AB32992AE1C876001445C6 /* CreateGoalModel.swift */,
 			);
 			path = CreateGoal;
 			sourceTree = "<group>";
@@ -642,6 +648,7 @@
 				75DC9EA82ADC61C100324E21 /* Response.swift in Sources */,
 				75DC9EA72ADC61C100324E21 /* NetworkManager.swift in Sources */,
 				B225C3E32AAEAEDD00CFBEE5 /* MainCell.swift in Sources */,
+				75AB32982AE1C832001445C6 /* CreateGoalViewModel.swift in Sources */,
 				75E7F2662ADF35170088B849 /* HabbitDetailModel.swift in Sources */,
 				75DC9D9E2AD6BF1A00324E21 /* HabbitCell.swift in Sources */,
 				B225C3CB2AAEAC4D00CFBEE5 /* BaseController.swift in Sources */,
@@ -674,6 +681,7 @@
 				75DC9EAB2ADC61C100324E21 /* EndpointType.swift in Sources */,
 				75DC9DC42AD9FB8700324E21 /* HabbitDetailThirdCell.swift in Sources */,
 				75DC9DC22AD9EE7600324E21 /* SectionHeaderView.swift in Sources */,
+				75AB329A2AE1C876001445C6 /* CreateGoalModel.swift in Sources */,
 				75DC9DEE2ADC468500324E21 /* GoalModel.swift in Sources */,
 				75DC9DAB2AD7487700324E21 /* CreateHabbitViewController.swift in Sources */,
 				75DC9DB02AD7503B00324E21 /* HabbitDetailVC.swift in Sources */,

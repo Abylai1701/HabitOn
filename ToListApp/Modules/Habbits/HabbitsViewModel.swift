@@ -17,7 +17,6 @@ final class HabbitsViewModel: HabbitsViewModelLogic {
 
     //MARK: - Functions
     internal func fetchHabbits() {
-        Router.shared.showLoader()
         ParseManager.shared.getRequest(
             url: API.habits,
             parameters: [:]) {
@@ -29,7 +28,6 @@ final class HabbitsViewModel: HabbitsViewModelLogic {
         }
     }
     internal func rebootHabbit(id: Int) {
-        Router.shared.showLoader()
         ParseManager.shared.postRequest(
             url: API.rebootHabbit(id: id),
             parameters: [:]) {

@@ -82,6 +82,12 @@ final class MainController: BaseController {
     private func tapCreate() {
         let vc = CreateGoalVC()
         vc.modalPresentationStyle = .overCurrentContext
+        vc.closeAction = { [weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.viewModel.fetchGoals()
+            }
+        }
         Router.shared.show(vc)
     }
 }

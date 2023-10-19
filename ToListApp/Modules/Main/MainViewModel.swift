@@ -13,7 +13,6 @@ final class MainViewModel: MainViewModelLogic {
 
     //MARK: - Functions
     internal func fetchGoals() {
-        Router.shared.showLoader()
         ParseManager.shared.getRequest(
             url: API.goals,
             parameters: [:]) {
