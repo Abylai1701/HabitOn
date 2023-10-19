@@ -111,7 +111,7 @@ class HabbitDetailSecondCell: UITableViewCell {
         let originalString = model.currentPeriod
         let currentTime = convertTimeIntervalString(originalString)
         
-        let maxTime = model.currentPeriod
+        let maxTime = model.maxPeriod
         let maxRecord = convertTimeIntervalString(maxTime)
         
         self.currentTime.text = currentTime
