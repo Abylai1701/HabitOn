@@ -15,7 +15,7 @@ struct HabbitDetailModel: Codable {
 struct Period: Codable {
     let interval, start: String
     let startUnix: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case interval, start
         case startUnix = "start_unix"

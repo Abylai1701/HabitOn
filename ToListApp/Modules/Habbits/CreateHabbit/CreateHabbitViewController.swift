@@ -35,7 +35,7 @@ final class CreateHabbitViewController: UIViewController {
     
     //MARK: - Properties
     let viewModel: CreateHabbitViewModelLogic = CreateHabbitViewModel()
-
+    
     let colors: [ColorsType] = [.scarlet,
                                 .yellow,
                                 .green,
@@ -45,8 +45,8 @@ final class CreateHabbitViewController: UIViewController {
                                 .red]
     
     var selectedColorIndex: Int?
-    var selectedColor: String? // Добавьте это свойство
-
+    var selectedColor: String?
+    
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -104,11 +104,11 @@ final class CreateHabbitViewController: UIViewController {
                              for: .normal)
         button.setImage(UIImage(named:"File add 1"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 24
-                )
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 24
+        )
         button.addTarget(self, action: #selector(tapCreate), for: .touchUpInside)
         return button
     }()
@@ -160,15 +160,10 @@ final class CreateHabbitViewController: UIViewController {
     // MARK: - Actions
     @objc func tapShadow() -> Void {
         tapClose()
-        closeAction?()
     }
     @objc func tapClose() -> Void {
         dismiss(animated: true, completion: nil)
         closeAction?()
-    }
-    @objc func tapShare() {
-        tapClose()
-        shareAction?()
     }
     @objc
     func tapCreate() -> Void {
@@ -181,23 +176,23 @@ final class CreateHabbitViewController: UIViewController {
     }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
-            case .changed:
-                viewTranslation = sender.translation(in: container)
+        case .changed:
+            viewTranslation = sender.translation(in: container)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+            })
+        case .ended:
+            if viewTranslation.y < 200 {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    self.container.transform = .identity
                 })
-            case .ended:
-                if viewTranslation.y < 200 {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.container.transform = .identity
-                    })
-                } else {
-                    view.backgroundColor = .clear
-                    dismiss(animated: true, completion: nil)
-                }
-            default:
-                break
+            } else {
+                view.backgroundColor = .clear
+                dismiss(animated: true, completion: nil)
             }
+        default:
+            break
+        }
     }
 }
 extension CreateHabbitViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

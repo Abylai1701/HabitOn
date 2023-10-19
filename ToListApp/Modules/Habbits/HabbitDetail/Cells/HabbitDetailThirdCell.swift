@@ -85,17 +85,21 @@ class HabbitDetailThirdCell: UITableViewCell {
         }
         return ""
     }
-
+    
     func calculateEndDate(startDate: String, interval: String) -> String {
         let calendar = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM"
+        
+        var time = ""
+        
         if let startDate = dateFormatter.date(from: startDate) {
             var components = DateComponents()
-            
+            print(startDate)
             // Разбираем интервал на компоненты (дни, часы, минуты)
             let intervalComponents = interval.components(separatedBy: " ")
-            if intervalComponents.count == 6 {
+            let numberOfElements = intervalComponents.count
+            if numberOfElements == 6 {
                 if let days = Int(intervalComponents[0]) {
                     components.day = days
                 }
@@ -110,12 +114,11 @@ class HabbitDetailThirdCell: UITableViewCell {
                 if let endDate = calendar.date(byAdding: components, to: startDate) {
                     let formattedStartDate = formatDateString(dateFormatter.string(from: startDate))
                     let formattedEndDate = formatDateString(dateFormatter.string(from: endDate))
-                    return "\(formattedStartDate) - \(formattedEndDate)"
+                    time =  "\(formattedStartDate) - \(formattedEndDate)"
                 }
             }
         }
-        
-        return ""
+        return time
     }
     
     func configure(model: Period?) {

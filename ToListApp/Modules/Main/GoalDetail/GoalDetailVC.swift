@@ -16,11 +16,11 @@ final class GoalDetailVC: BaseController {
     
     private let viewModel: GoalDetailViewModelLogic = GoalDetailViewModel()
     private var goalModel: GoalDetailModel?
-
+    
     var closeAction : (()->())?
     var shareAction: (()->())?
     private var id: Int
-
+    
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "exit_icon2"), for: .normal)
@@ -94,7 +94,7 @@ final class GoalDetailVC: BaseController {
                          editButton,
                          deleteButton,
                          tableView)
-    
+        
         closeButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(70)
             make.left.equalToSuperview().offset(22)
@@ -183,7 +183,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
             }
             return SectionHeaderView(title: "История")
         default:
-           return nil
+            return nil
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

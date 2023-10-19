@@ -18,7 +18,7 @@ final class EditGoalVC: UIViewController {
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
     private lazy var buttonsStack = UIStackView()
-
+    
     private lazy var shadowView: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -184,7 +184,7 @@ final class EditGoalVC: UIViewController {
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(45)
         }
-    
+        
         buttonsStack.addArrangedSubview(deleteButton)
         buttonsStack.addArrangedSubview(saveButton)
         buttonsStack.axis = .horizontal
@@ -220,23 +220,23 @@ final class EditGoalVC: UIViewController {
     }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
-            case .changed:
-                viewTranslation = sender.translation(in: container)
+        case .changed:
+            viewTranslation = sender.translation(in: container)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+            })
+        case .ended:
+            if viewTranslation.y < 200 {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    self.container.transform = .identity
                 })
-            case .ended:
-                if viewTranslation.y < 200 {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.container.transform = .identity
-                    })
-                } else {
-                    view.backgroundColor = .clear
-                    dismiss(animated: true, completion: nil)
-                }
-            default:
-                break
+            } else {
+                view.backgroundColor = .clear
+                dismiss(animated: true, completion: nil)
             }
+        default:
+            break
+        }
     }
 }
 extension EditGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -247,9 +247,9 @@ extension EditGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let isSelect = daysModel[indexPath.row].isSelected
-    daysModel[indexPath.row].isSelected = !isSelect
-    collectionView.reloadData()
-}
+        let isSelect = daysModel[indexPath.row].isSelected
+        daysModel[indexPath.row].isSelected = !isSelect
+        collectionView.reloadData()
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

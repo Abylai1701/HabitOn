@@ -8,7 +8,9 @@ class HabbitDetailFirstCell: UITableViewCell {
     //MARK: - Properties
     private var habbitModel: HabbitDetailModel? = nil
     var colorsModel: [ColorModel] = []
-
+    
+    var rebootAction : (()->())?
+    
     let colors: [ColorsType] = [.scarlet,
                                 .yellow,
                                 .green,
@@ -25,7 +27,7 @@ class HabbitDetailFirstCell: UITableViewCell {
         button.setTitle("Перезагрузить", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(.blueColor, for: .normal)
-
+        button.addTarget(self, action: #selector(reBoot), for: .touchUpInside)
         return button
     }()
     private lazy var habbitField: UITextField = {
@@ -38,6 +40,7 @@ class HabbitDetailFirstCell: UITableViewCell {
         field.layer.masksToBounds = true
         let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 16,
                                             height: 16))
+        field.isUserInteractionEnabled = false
         field.leftView = iconView
         field.leftViewMode = .always
         field.textColor = .white
@@ -103,11 +106,15 @@ class HabbitDetailFirstCell: UITableViewCell {
         guard let model = model else { return }
         self.habbitModel = model
         for i in 0..<colors.count {
-            // Проверяем, есть ли у модели цвет, и присваиваем его или значение по умолчанию
             let isSelected = model.color == colors[i]
             colorsModel[i].isSelected = isSelected
         }
+        habbitField.text = model.name
         self.collectionView.reloadData()
+    }
+    //MARK: - Actions
+    @objc func reBoot() {
+        rebootAction?()
     }
 }
 
@@ -118,9 +125,9 @@ extension HabbitDetailFirstCell: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColourCell.cellId, for: indexPath) as! ColourCell
         cell.configureDetail(color: colorsModel[indexPath.row])
-
+        
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

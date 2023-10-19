@@ -4,7 +4,7 @@ class HabbitDetailSecondCell: UITableViewCell {
     
     //MARK: - Properties
     private var habbitModel: HabbitDetailModel? = nil
-
+    
     private lazy var container: UIView = {
         let container = UIView()
         container.backgroundColor = .blueColor2
@@ -51,8 +51,8 @@ class HabbitDetailSecondCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-
-
+    
+    
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -12,7 +12,7 @@ final class CreateGoalVC: UIViewController {
                              .saturday,
                              .sunday]
     var daysModel: [WeekDayModel] = []
-
+    
     var closeAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
@@ -54,14 +54,16 @@ final class CreateGoalVC: UIViewController {
         button.layer.masksToBounds = true
         return button
     }()
-    private lazy var n21Button: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "21"),
-                        for: .normal)
-        button.backgroundColor = .blueText
-        button.layer.cornerRadius = 30
-        button.layer.masksToBounds = true
-        return button
+    private lazy var n21Button: UITextField = {
+        let field = UITextField()
+        field.backgroundColor = .blueText
+        field.text = "21"
+        field.font = .montserratSemiBold(ofSize: 24)
+        field.layer.cornerRadius = 30
+        field.layer.masksToBounds = true
+        field.textAlignment = .center
+        field.textColor = .white
+        return field
     }()
     private lazy var repeatLabel: UILabel = {
         let label = UILabel()
@@ -103,11 +105,11 @@ final class CreateGoalVC: UIViewController {
                              for: .normal)
         button.setImage(UIImage(named:"File add 1"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: 24
-                )
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 24
+        )
         return button
     }()
     // MARK: - Lifecycle
@@ -192,23 +194,23 @@ final class CreateGoalVC: UIViewController {
     }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
-            case .changed:
-                viewTranslation = sender.translation(in: container)
+        case .changed:
+            viewTranslation = sender.translation(in: container)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+            })
+        case .ended:
+            if viewTranslation.y < 200 {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    self.container.transform = .identity
                 })
-            case .ended:
-                if viewTranslation.y < 200 {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.container.transform = .identity
-                    })
-                } else {
-                    view.backgroundColor = .clear
-                    dismiss(animated: true, completion: nil)
-                }
-            default:
-                break
+            } else {
+                view.backgroundColor = .clear
+                dismiss(animated: true, completion: nil)
             }
+        default:
+            break
+        }
     }
 }
 extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -219,9 +221,9 @@ extension CreateGoalVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let isSelect = daysModel[indexPath.row].isSelected
-    daysModel[indexPath.row].isSelected = !isSelect
-    collectionView.reloadData()
-}
+        let isSelect = daysModel[indexPath.row].isSelected
+        daysModel[indexPath.row].isSelected = !isSelect
+        collectionView.reloadData()
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {8}
 }

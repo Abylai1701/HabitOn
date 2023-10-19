@@ -98,7 +98,7 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: MainCell.cellId,
             for: indexPath) as! MainCell
         cell.configure(model: goals[indexPath.section])
-
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,17 +123,17 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
         
         return leadingSwipeConfiguration
     }
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // Создайте действие для свайпа вправо
-        let rightAction = UIContextualAction(style: .normal, title: "Изменить") { (action, view, completionHandler) in
-            // Здесь можно выполнять действия, связанные с правым свайпом
-            completionHandler(true)
-        }
-        rightAction.backgroundColor = .yellowColor // Установите цвет для действия
-        
-        // Создайте конфигурацию для правого свайпа
-        let trailingSwipeConfiguration = UISwipeActionsConfiguration(actions: [rightAction])
-        
-        return trailingSwipeConfiguration
-    }
+    //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    //        // Создайте действие для свайпа вправо
+    //        let rightAction = UIContextualAction(style: .normal, title: "Изменить") { (action, view, completionHandler) in
+    //            // Здесь можно выполнять действия, связанные с правым свайпом
+    //            completionHandler(true)
+    //        }
+    //        rightAction.backgroundColor = .yellowColor // Установите цвет для действия
+    //
+    //        // Создайте конфигурацию для правого свайпа
+    //        let trailingSwipeConfiguration = UISwipeActionsConfiguration(actions: [rightAction])
+    //
+    //        return trailingSwipeConfiguration
+    //    }
 }

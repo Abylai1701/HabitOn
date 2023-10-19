@@ -17,8 +17,9 @@ final class HabbitDetailVC: UIViewController {
     private let viewModel: HabbitDetailViewModelLogic = HabbitDetailViewModel()
     private var habbitModel: HabbitDetailModel?
     private var id: Int
-
+    
     var closeAction : (()->())?
+    var rebootAction : (()->())?
     var shareAction: (()->())?
     var viewTranslation = CGPoint(x: 0, y: 0)
     
@@ -36,10 +37,12 @@ final class HabbitDetailVC: UIViewController {
         return container
     }()
     private lazy var closeButton: UIImageView = {
-        view.isUserInteractionEnabled = true
         let view = UIImageView()
+        view.isUserInteractionEnabled = true
         view.image = UIImage(named: "exit_icon")
         view.contentMode = .scaleAspectFit
+        let target = UITapGestureRecognizer(target: self, action: #selector(close))
+        view.addGestureRecognizer(target)
         return view
     }()
     private lazy var deleteButton: UIImageView = {
@@ -95,6 +98,7 @@ final class HabbitDetailVC: UIViewController {
         
         view.addSubviews(shadowView, container)
         container.isUserInteractionEnabled = true
+        
         shadowView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -125,40 +129,36 @@ final class HabbitDetailVC: UIViewController {
         
     }
     // MARK: - Actions
-    @objc func tapShadow() -> Void {
-        tapClose()
+    @objc func tapShadow() {
+        close()
     }
-    @objc func tapClose() -> Void {
+    @objc func close() {
         dismiss(animated: true, completion: nil)
-        closeAction?()
-    }
-    @objc func tapShare() {
-        tapClose()
-        shareAction?()
     }
     @objc func tapDelete() {
         viewModel.removeHabbit(id: self.id)
-        tapClose()
+        dismiss(animated: true, completion: nil)
+        closeAction?()
     }
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
         switch sender.state {
-            case .changed:
-                viewTranslation = sender.translation(in: container)
+        case .changed:
+            viewTranslation = sender.translation(in: container)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+            })
+        case .ended:
+            if viewTranslation.y < 200 {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                    self.container.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    self.container.transform = .identity
                 })
-            case .ended:
-                if viewTranslation.y < 200 {
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.container.transform = .identity
-                    })
-                } else {
-                    view.backgroundColor = .clear
-                    dismiss(animated: true, completion: nil)
-                }
-            default:
-                break
+            } else {
+                view.backgroundColor = .clear
+                dismiss(animated: true, completion: nil)
             }
+        default:
+            break
+        }
     }
 }
 //MARK: - TableView Delegate
@@ -183,6 +183,12 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
         case .first:
             let cell = tableView.dequeueReusableCell(withIdentifier: HabbitDetailFirstCell.cellId, for: indexPath) as! HabbitDetailFirstCell
             cell.configure(model: habbitModel)
+            cell.rebootAction = { [weak self]  in
+                guard let self = self else {return}
+                self.rebootAction?()
+                self.close()
+                self.closeAction?()
+            }
             return cell
         case .second:
             let cell = tableView.dequeueReusableCell(withIdentifier: HabbitDetailSecondCell.cellId, for: indexPath) as! HabbitDetailSecondCell
@@ -193,7 +199,7 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
             
             let histories = habbitModel?.periods?[indexPath.row]
             cell.configure(model: histories)
-
+            
             if let isEmpty = habbitModel?.periods?.isEmpty, isEmpty {
                 cell.isHidden = true
             }
@@ -210,7 +216,7 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
             view.container.backgroundColor = .blueColor2
             return view
         default:
-           return nil
+            return nil
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

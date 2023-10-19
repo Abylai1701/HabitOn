@@ -81,8 +81,6 @@ final class HabbitsViewController: BaseController {
             make.height.equalTo(45)
         }
     }
-    
-    
     //MARK: - Functions
     @objc
     private func tapCreate() {
@@ -95,8 +93,6 @@ final class HabbitsViewController: BaseController {
         }
     }
 }
-
-
 //MARK: - TableView Delegate
 extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,11 +119,15 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = HabbitDetailVC(id: habbits[indexPath.section].id)
         vc.modalPresentationStyle = .overCurrentContext
-        Router.shared.show(vc)
         vc.closeAction = { [weak self]  in
             guard let self = self else {return}
             self.viewModel.fetchHabbits()
         }
+        vc.rebootAction = { [weak self]  in
+            guard let self = self else {return}
+            self.viewModel.rebootHabbit(id: self.habbits[indexPath.section].id)
+        }
+        Router.shared.show(vc)
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
