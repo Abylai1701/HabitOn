@@ -4,7 +4,7 @@ class UserManager {
     static let shared                 = UserManager()
     private let userDefaults          = UserDefaults.standard
     private let currentUserIdentifier = "currentUserIdentifier"
-    private let currentToken          = "JnwgrbiOvdDqkpd7XbAVj9jN3hR5EsmZnDomhJ8z"
+    private let currentToken          = "currentToken"
     private let isShownOnBoard        = "isShownOnBoard"
     
     private init() {}

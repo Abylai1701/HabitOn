@@ -80,6 +80,7 @@
 		B225C40A2AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F72AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf */; };
 		B225C40B2AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B225C3F82AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf */; };
 		B225C40D2AAEB51E00CFBEE5 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225C40C2AAEB51E00CFBEE5 /* CircularProgressView.swift */; };
+		B249BC992B14A93E0015B0B2 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B249BC982B14A93E0015B0B2 /* TokenModel.swift */; };
 		B28547212AAC63E600EF057C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547202AAC63E600EF057C /* AppDelegate.swift */; };
 		B28547252AAC63E600EF057C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28547242AAC63E600EF057C /* ViewController.swift */; };
 		B28547282AAC63E600EF057C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B28547262AAC63E600EF057C /* Main.storyboard */; };
@@ -172,6 +173,7 @@
 		B225C3F72AAEB1A100CFBEE5 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		B225C3F82AAEB1A100CFBEE5 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		B225C40C2AAEB51E00CFBEE5 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		B249BC982B14A93E0015B0B2 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		B285471D2AAC63E600EF057C /* ToListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28547202AAC63E600EF057C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B28547242AAC63E600EF057C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +354,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B20639202AE5BC6900DCF74E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B225C3BF2AAEA9C300CFBEE5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +379,7 @@
 		B225C3C02AAEA9C900CFBEE5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B20639202AE5BC6900DCF74E /* Auth */,
 				B225C3C52AAEAC1A00CFBEE5 /* Main */,
 				75DC9D992AD6BEB300324E21 /* Habbits */,
 				75DC9DA12AD6D55E00324E21 /* Settings */,
@@ -487,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				B28547372AAC68B600EF057C /* TabBarController.swift */,
+				B249BC982B14A93E0015B0B2 /* TokenModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -673,6 +684,7 @@
 				75DC9DCA2ADC424C00324E21 /* UserManager.swift in Sources */,
 				75DC9DA32AD6D57A00324E21 /* SettingsViewController.swift in Sources */,
 				75DC9EA52ADC61C100324E21 /* NetworkResponse.swift in Sources */,
+				B249BC992B14A93E0015B0B2 /* TokenModel.swift in Sources */,
 				B28547382AAC68B600EF057C /* TabBarController.swift in Sources */,
 				75DC9DA82AD6D9FF00324E21 /* MenuNotificationCell.swift in Sources */,
 				B28547252AAC63E600EF057C /* ViewController.swift in Sources */,
@@ -857,25 +869,31 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PNQCPAM62S;
+				DEVELOPMENT_TEAM = JDCMRPD92B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToListApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitOn;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.ToListApp;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.habiton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -887,25 +905,31 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PNQCPAM62S;
+				DEVELOPMENT_TEAM = JDCMRPD92B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToListApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitOn;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.ToListApp;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bauyrzhan.habiton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

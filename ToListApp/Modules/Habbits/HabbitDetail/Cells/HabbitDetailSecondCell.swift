@@ -30,7 +30,7 @@ class HabbitDetailSecondCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 12)
         label.textColor = .grayColor
-        label.text = "главный рекорд"
+        label.text = "main record"
         label.numberOfLines = 1
         return label
     }()
@@ -47,7 +47,7 @@ class HabbitDetailSecondCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 12)
         label.textColor = .grayColor
-        label.text = "текущий счет"
+        label.text = "count now"
         label.numberOfLines = 1
         return label
     }()

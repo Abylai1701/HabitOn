@@ -116,7 +116,7 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
             guard let self = self else {return}
             self.viewModel.removeGoal(id: self.goals[indexPath.section].id)
         }
-        Router.shared.push(vc)
+        Router.shared.push(vc, animated: false)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? { nil }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { 0 }
@@ -124,7 +124,7 @@ extension MainController: UITableViewDataSource, UITableViewDelegate {
         UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leftAction = UIContextualAction(style: .normal, title: "Готово") { (action, view, completionHandler) in
+        let leftAction = UIContextualAction(style: .normal, title: "Done") { (action, view, completionHandler) in
             self.viewModel.doneGoal(id: self.goals[indexPath.section].id)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.viewModel.fetchGoals()

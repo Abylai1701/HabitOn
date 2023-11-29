@@ -24,7 +24,7 @@ class HabbitDetailThirdCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 11)
         label.textColor = .green
-        label.text = "Выполнено"
+        label.text = "Done"
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label

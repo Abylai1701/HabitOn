@@ -148,7 +148,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
             cell.configure(model: goalModel)
             cell.doneAction = {[weak self] in
                 guard let self = self else {return}
-                self?.doneAction?()
+                self.doneAction?()
             }
             return cell
         case .second:
@@ -174,7 +174,7 @@ extension GoalDetailVC: UITableViewDataSource, UITableViewDelegate {
             if let isEmpty = goalModel?.history?.isEmpty, isEmpty {
                 return nil
             }
-            return SectionHeaderView(title: "История")
+            return SectionHeaderView(title: "History")
         default:
             return nil
         }

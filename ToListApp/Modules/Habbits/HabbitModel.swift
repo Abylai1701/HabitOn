@@ -5,3 +5,4 @@ struct HabbitModel: Codable {
     let name, color, currentInterval, cratedAt: String
     let currentPeriodStart: Int
 }
+

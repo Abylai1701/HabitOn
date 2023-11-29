@@ -211,7 +211,7 @@ extension HabbitDetailVC: UITableViewDataSource, UITableViewDelegate {
         
         switch section {
         case .third:
-            let view = SectionHeaderView(title: "История")
+            let view = SectionHeaderView(title: "History")
             view.container.backgroundColor = .blueColor2
             return view
         default:

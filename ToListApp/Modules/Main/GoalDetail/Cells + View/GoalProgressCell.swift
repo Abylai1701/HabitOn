@@ -17,7 +17,7 @@ class GoalProgressCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 14)
         label.textColor = .white
-        label.text = "Выполнено"
+        label.text = "Done"
         label.numberOfLines = 1
         return label
     }()

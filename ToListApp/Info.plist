@@ -9,5 +9,7 @@
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>Montserrat-Medium.ttf</string>
 	</array>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
 </dict>
 </plist>

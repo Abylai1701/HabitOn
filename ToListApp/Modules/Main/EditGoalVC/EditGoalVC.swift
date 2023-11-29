@@ -106,7 +106,7 @@ final class EditGoalVC: UIViewController {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 22
-        button.setTitle("Сохранить", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.titleLabel?.font = .montserratSemiBold(ofSize: 14)
         button.setTitleColor(.blueColor, for: .normal)
         

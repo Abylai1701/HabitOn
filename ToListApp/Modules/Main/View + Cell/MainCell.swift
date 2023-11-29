@@ -23,8 +23,8 @@ class MainCell: UITableViewCell {
     }()
     private lazy var progressView: CircularProgressView = {
         let view = CircularProgressView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), lineWidth: 10, rounded: false)
-        view.trackColor = .blueColor
-        view.progressColor = .whiteBlue
+        view.trackColor = .whiteBlue
+        view.progressColor = .blueColor
         return view
     }()
     private lazy var countLabel: UILabel = {

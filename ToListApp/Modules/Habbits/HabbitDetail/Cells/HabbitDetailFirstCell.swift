@@ -24,7 +24,7 @@ class HabbitDetailFirstCell: UITableViewCell {
         let button = UIButton()
         button.backgroundColor = .scarletColor
         button.layer.cornerRadius = 22
-        button.setTitle("Перезагрузить", for: .normal)
+        button.setTitle("Reload", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(.blueColor, for: .normal)
         button.addTarget(self, action: #selector(reBoot), for: .touchUpInside)

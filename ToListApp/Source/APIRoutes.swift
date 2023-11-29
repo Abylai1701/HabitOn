@@ -8,6 +8,7 @@ enum API {
     static let goals                = "habit"
     static let habits               = "interval"
     static let goalDone               = "goal_progress"
+    static let generateToken        = "generate-token"
 
 //    static let rejectedTickets      = "v2/ticket/rejected"
 //    static let cancellationReasons  = "v2/ticket/cancellation_reasons"

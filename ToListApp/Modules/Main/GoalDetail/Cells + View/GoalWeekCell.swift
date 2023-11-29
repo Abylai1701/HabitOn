@@ -12,13 +12,13 @@ enum DayOfWeek: String {
     
     var title: String {
         switch self {
-        case .monday: return "Пн"
-        case .tuesday: return "Вт"
-        case .wednesday: return "Ср"
-        case .thursday: return "Чт"
-        case .friday: return "Пт"
-        case .saturday: return "Сб"
-        case .sunday: return "Вс"
+        case .monday: return "Mn"
+        case .tuesday: return "Tu"
+        case .wednesday: return "We"
+        case .thursday: return "Th"
+        case .friday: return "Fr"
+        case .saturday: return "St"
+        case .sunday: return "Su"
         case .null: return ""
         }
     }
@@ -56,7 +56,7 @@ class GoalWeekCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratSemiBold(ofSize: 14)
         label.textColor = .white
-        label.text = "Дни повторения"
+        label.text = "Repeat days"
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label
@@ -98,7 +98,7 @@ class GoalWeekCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 12)
         label.textColor = .grayColor
-        label.text = "главный рекорд"
+        label.text = "main record"
         label.numberOfLines = 1
         return label
     }()
@@ -114,7 +114,7 @@ class GoalWeekCell: UITableViewCell {
         let label = UILabel()
         label.font = .montserratRegular(ofSize: 12)
         label.textColor = .grayColor
-        label.text = "текущий счет"
+        label.text = "Count now"
         label.numberOfLines = 1
         return label
     }()
@@ -206,8 +206,8 @@ class GoalWeekCell: UITableViewCell {
     func configure(model: GoalDetailModel?) {
         guard let model = model else {return}
         self.weekModel = model
-        self.currentTime.text = "\(model.currentSeries ?? 667) раз"
-        self.recordTime.text = "\(model.longestSeries ?? 667) раз подряд"
+        self.currentTime.text = "\(model.currentSeries ?? 667) times"
+        self.recordTime.text = "\(model.longestSeries ?? 667) times in a row"
         for i in 0..<days.count{
             daysModel[i].isSelected = model.days?.contains(days[i]) ?? false
         }

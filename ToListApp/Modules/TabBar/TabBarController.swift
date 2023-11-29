@@ -22,8 +22,27 @@ final class TabbarController: UITabBarController,
         self.tabBar.unselectedItemTintColor = .white
         self.tabBar.backgroundColor = .blueColor
         UITabBar.appearance().barTintColor = .blueColor
-        self.viewControllers = [main, deadlines, settings]
         
+        if UserManager.shared.getAccessToken() == nil {
+            generateToken {
+                self.viewControllers = [main, deadlines]
+            }
+        }
+        else {
+            self.viewControllers = [main, deadlines]
+        }
+    }
+    internal func generateToken(completion: (()->())?) {
+        ParseManager.shared.postRequest(
+            url: API.generateToken,
+            parameters: ["platform":"ios"]) {
+                (result: TokenModel?, error) in
+                Router.shared.hideLoader()
+                if let result = result?.remember_token {
+                    UserManager.shared.setAccessToken(token: result)
+                    completion?()
+                }
+            }
     }
 }
 

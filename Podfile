@@ -7,5 +7,6 @@ target 'ToListApp' do
 
   # Pods for ToListApp
   pod 'SnapKit'
+  pod 'IQKeyboardManager'
 
 end

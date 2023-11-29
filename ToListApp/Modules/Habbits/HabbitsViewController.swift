@@ -133,7 +133,7 @@ extension HabbitsViewController: UITableViewDataSource, UITableViewDelegate {
         Router.shared.show(vc)
     }
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leftAction = UIContextualAction(style: .normal, title: "Перезагрузить") { (action, view, completionHandler) in
+        let leftAction = UIContextualAction(style: .normal, title: "Reload") { (action, view, completionHandler) in
             self.viewModel.rebootHabbit(id: self.habbits[indexPath.section].id)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.viewModel.fetchHabbits()
